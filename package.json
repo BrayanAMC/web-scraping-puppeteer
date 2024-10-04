@@ -1,0 +1,28 @@
+{
+  "name": "puppeteer-overview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/identity": "^4.4.1",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "@pnp/graph": "^4.4.0",
+    "@pnp/nodejs": "^4.4.0",
+    "@pnp/nodejs-commonjs": "^2.15.0",
+    "@pnp/sp": "^4.4.0",
+    "dotenv": "^16.4.5",
+    "isomorphic-fetch": "^3.0.0",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "puppeteer": "^23.1.1",
+    "sharepointplus": "^6.2.0",
+    "xlsx": "^0.18.5"
+  }
+}
