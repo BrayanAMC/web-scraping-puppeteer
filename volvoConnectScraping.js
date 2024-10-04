@@ -34,6 +34,7 @@ async function scraping() {
     await page.click('[data-testid="login-button"]');
     await page.waitForSelector('#main-menu-button');
     await page.click('#main-menu-button');
+    await page.waitForSelector('[data-testid="pros-assets-icon"]');
     await page.click('[data-testid="pros-assets-icon"]');
     await page.waitForSelector('.MuiTypography-root.MuiTypography-body1');
     await page.click('.MuiTypography-root.MuiTypography-body1');
