@@ -219,6 +219,7 @@ async function getListItemByPatent(siteId, listId, patent) {
 // Crear o actualizar elementos en la lista de SharePoint
 async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
     try {
+        let contador = 0;
         for (const item of items) {
             const existingItem = await getListItemByPatent(siteId, listId, item.patent);
 
@@ -235,7 +236,7 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                 };
 
                 await client.api(`/sites/${siteId}/lists/${listId}/items/${existingItem.id}`).patch(updatedItem);
-                console.log(`Elemento actualizado: ${item.patent}`);
+                console.log(`Elemento actualizado: ${item.patent}`); contador++;
             } else {
                 const newItem = {
                     fields: {
@@ -249,9 +250,9 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                 };
 
                 await client.api(`/sites/${siteId}/lists/${listId}/items`).post(newItem);
-                console.log(`Elemento añadido a la lista: ${item.patent}`);
+                console.log(`Elemento añadido a la lista: ${item.patent}`); contador++;
             }
-        }
+        } console.log(`Se han actualizado ${contador} elementos en la lista de SharePoint.`);
     } catch (error) {
         console.error("Error añadiendo o actualizando elementos en la lista de SharePoint:", error);
     }

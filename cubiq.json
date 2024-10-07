@@ -2,9 +2,25 @@
   {
     "patent": "LBF05461",
     "location": "Punitaqui, Chile",
-    "odometer": "4675 km",
-    "hourometer": "7336 h",
-    "lastUpdate": "Performance - 7 horas atrás",
+    "odometer": "4679 km",
+    "hourometer": "7344 h",
+    "lastUpdate": "Performance - 4 horas atrás",
+    "source": "Cubiq"
+  },
+  {
+    "patent": "AZ600586",
+    "location": "Punitaqui, Chile",
+    "odometer": "0 km",
+    "hourometer": "5080 h",
+    "lastUpdate": "Performance - 5 horas atrás",
+    "source": "Cubiq"
+  },
+  {
+    "patent": "TJL05848",
+    "location": "Punitaqui, Chile",
+    "odometer": "986 km",
+    "hourometer": "4577 h",
+    "lastUpdate": "Performance - 5 horas atrás",
     "source": "Cubiq"
   },
   {
@@ -12,15 +28,7 @@
     "location": "Avenida Pedro Aguirre Cerda 7832, 1267008 Antofagasta, Antofagasta Region, Chile",
     "odometer": "236 km",
     "hourometer": "807 h",
-    "lastUpdate": "CAT Daily - 9 horas atrás",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "TJL05848",
-    "location": "Punitaqui, Chile",
-    "odometer": "985 km",
-    "hourometer": "4574 h",
-    "lastUpdate": "Performance - 10 horas atrás",
+    "lastUpdate": "CAT Daily - 17 horas atrás",
     "source": "Cubiq"
   },
   {
@@ -28,15 +36,7 @@
     "location": "Avenida Miguel Lemeur 191, 1530000 Tierra Amarilla, Atacama Region, Chile",
     "odometer": "4610 km",
     "hourometer": "3395 h",
-    "lastUpdate": "CAT Daily - 10 horas atrás",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "AZ600586",
-    "location": "Punitaqui, Chile",
-    "odometer": "0 km",
-    "hourometer": "5079 h",
-    "lastUpdate": "Performance - 14 horas atrás",
+    "lastUpdate": "CAT Daily - 18 horas atrás",
     "source": "Cubiq"
   },
   {
@@ -44,7 +44,7 @@
     "location": "Punitaqui, Chile",
     "odometer": "72 km",
     "hourometer": "8912 h",
-    "lastUpdate": "Performance - 16 horas atrás",
+    "lastUpdate": "Performance - 1 hace un día",
     "source": "Cubiq"
   },
   {
@@ -52,7 +52,7 @@
     "location": "Tierra Amarilla, Chile",
     "odometer": "20 km",
     "hourometer": "4431 h",
-    "lastUpdate": "CAT Daily - 21 horas atrás",
+    "lastUpdate": "CAT Daily - 1 hace un día",
     "source": "Cubiq"
   },
   {
@@ -60,7 +60,7 @@
     "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
     "odometer": "2661 km",
     "hourometer": "3694 h",
-    "lastUpdate": "CAT Daily - 23 horas atrás",
+    "lastUpdate": "CAT Daily - 1 hace un día",
     "source": "Cubiq"
   },
   {
@@ -92,7 +92,7 @@
     "location": "Tierra Amarilla, Chile",
     "odometer": "216 km",
     "hourometer": "1434 h",
-    "lastUpdate": "hace CAT Daily - 4 días",
+    "lastUpdate": "hace CAT Daily - 5 días",
     "source": "Cubiq"
   },
   {
