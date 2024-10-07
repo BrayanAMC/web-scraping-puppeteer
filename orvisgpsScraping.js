@@ -23,9 +23,10 @@ async function scraping() {
 
     const browser = await puppeteer.launch({
         headless: false,
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        defaultViewport: null,
-        protocolTimeout: 120000
+        slowMo: 200,
+        //args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        //defaultViewport: null,
+        //protocolTimeout: 120000
     });
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
@@ -33,6 +34,7 @@ async function scraping() {
 
     await page.type('#user', username);
     await page.type('#passw', password);
+    await page.waitForSelector('#submit');
     await page.click('#submit');
     await new Promise(r => setTimeout(r, 15000));
     
@@ -43,6 +45,7 @@ async function scraping() {
     
     while(true){
         //poder ver si se puede hacer hover
+        await page.waitForSelector('.x-monitoring-unit-row');
         let rows = await page.$$('.x-monitoring-unit-row');
         let contador = 0;
         for(const row of rows){

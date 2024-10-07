@@ -1,82 +1,74 @@
 [
   {
-    "patent": "AZ600586",
-    "location": "Punitaqui, Chile",
-    "odometer": "0 km",
-    "hourometer": "5057 h",
-    "lastUpdate": "Performance - 4 horas atrás",
-    "source": "Cubiq"
-  },
-  {
     "patent": "LBF05461",
     "location": "Punitaqui, Chile",
-    "odometer": "4654 km",
-    "hourometer": "7297 h",
-    "lastUpdate": "Performance - 4 horas atrás",
+    "odometer": "4675 km",
+    "hourometer": "7336 h",
+    "lastUpdate": "Performance - 7 horas atrás",
     "source": "Cubiq"
   },
   {
     "patent": "H9P00157",
     "location": "Avenida Pedro Aguirre Cerda 7832, 1267008 Antofagasta, Antofagasta Region, Chile",
     "odometer": "236 km",
-    "hourometer": "806 h",
-    "lastUpdate": "CAT Daily - 10 horas atrás",
+    "hourometer": "807 h",
+    "lastUpdate": "CAT Daily - 9 horas atrás",
+    "source": "Cubiq"
+  },
+  {
+    "patent": "TJL05848",
+    "location": "Punitaqui, Chile",
+    "odometer": "985 km",
+    "hourometer": "4574 h",
+    "lastUpdate": "Performance - 10 horas atrás",
     "source": "Cubiq"
   },
   {
     "patent": "MPW02116",
     "location": "Avenida Miguel Lemeur 191, 1530000 Tierra Amarilla, Atacama Region, Chile",
     "odometer": "4610 km",
-    "hourometer": "3394 h",
-    "lastUpdate": "CAT Daily - 11 horas atrás",
+    "hourometer": "3395 h",
+    "lastUpdate": "CAT Daily - 10 horas atrás",
+    "source": "Cubiq"
+  },
+  {
+    "patent": "AZ600586",
+    "location": "Punitaqui, Chile",
+    "odometer": "0 km",
+    "hourometer": "5079 h",
+    "lastUpdate": "Performance - 14 horas atrás",
+    "source": "Cubiq"
+  },
+  {
+    "patent": "SMC01884",
+    "location": "Punitaqui, Chile",
+    "odometer": "72 km",
+    "hourometer": "8912 h",
+    "lastUpdate": "Performance - 16 horas atrás",
     "source": "Cubiq"
   },
   {
     "patent": "ZBN31519",
     "location": "Tierra Amarilla, Chile",
     "odometer": "20 km",
-    "hourometer": "4414 h",
-    "lastUpdate": "CAT Daily - 14 horas atrás",
+    "hourometer": "4431 h",
+    "lastUpdate": "CAT Daily - 21 horas atrás",
     "source": "Cubiq"
   },
   {
     "patent": "B5400570",
-    "location": "Pedro Aguirre Cerda 48, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "2652 km",
-    "hourometer": "3680 h",
-    "lastUpdate": "CAT Daily - 19 horas atrás",
+    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "2661 km",
+    "hourometer": "3694 h",
+    "lastUpdate": "CAT Daily - 23 horas atrás",
     "source": "Cubiq"
   },
   {
-    "patent": "ZBN31394",
-    "location": "Tierra Amarilla, Chile",
-    "odometer": "60 km",
-    "hourometer": "2190 h",
+    "patent": "MB800854",
+    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "220 km",
+    "hourometer": "2380 h",
     "lastUpdate": "CAT Daily - 1 hace un día",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "MB800856",
-    "location": "Tierra Amarilla, Chile",
-    "odometer": "216 km",
-    "hourometer": "1434 h",
-    "lastUpdate": "CAT Daily - 1 hace un día",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "SMC01884",
-    "location": "Punitaqui, Chile",
-    "odometer": "71 km",
-    "hourometer": "8888 h",
-    "lastUpdate": "hace Performance - 2 días",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "9SD00455",
-    "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
-    "odometer": "0 km",
-    "hourometer": "5489 h",
-    "lastUpdate": "hace CAT Daily - 2 días",
     "source": "Cubiq"
   },
   {
@@ -84,23 +76,31 @@
     "location": "Tocopilla, Chile",
     "odometer": "3701 km",
     "hourometer": "2924 h",
-    "lastUpdate": "hace Performance - 3 días",
+    "lastUpdate": "hace Performance - 2 días",
     "source": "Cubiq"
   },
   {
-    "patent": "TJL05848",
-    "location": "Punitaqui, Chile",
-    "odometer": "984 km",
-    "hourometer": "4571 h",
-    "lastUpdate": "hace Performance - 3 días",
+    "patent": "ZBN31394",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "60 km",
+    "hourometer": "2206 h",
+    "lastUpdate": "hace CAT Daily - 2 días",
     "source": "Cubiq"
   },
   {
-    "patent": "MB800854",
-    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "220 km",
-    "hourometer": "2363 h",
+    "patent": "MB800856",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "216 km",
+    "hourometer": "1434 h",
     "lastUpdate": "hace CAT Daily - 4 días",
+    "source": "Cubiq"
+  },
+  {
+    "patent": "9SD00455",
+    "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
+    "odometer": "0 km",
+    "hourometer": "5489 h",
+    "lastUpdate": "hace CAT Daily - 5 días",
     "source": "Cubiq"
   },
   {
