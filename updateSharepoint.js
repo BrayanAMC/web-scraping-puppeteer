@@ -15,6 +15,7 @@ const siteUrl = process.env.SHAREPOINT_URL;
 console.log(`Tenant ID: ${tenantId}`);
 console.log(`Client ID: ${clientId}`);
 console.log(`Client Secret: ${clientSecret}`);
+
 // Autenticación utilizando Client Credentials
 const credential = new ClientSecretCredential(tenantId, clientId, clientSecret);
 
@@ -30,8 +31,27 @@ const client = Client.init({
         }
     },
 });
-function removeHyphens(patent) {
-    return patent.replace(/-/g, '');
+
+async function getItemsFromSharePointList(siteId, listId) {
+    try {
+        // Hacer la solicitud GET para obtener los elementos de la lista
+        const response = await client.api(`/sites/${siteId}/lists/${listId}/items`)
+        .expand('fields($select=PATENTE,ODOMETRO)')
+        .get();
+        const filteredItems = response.value.map(item => ({
+            PATENTE: item.fields.PATENTE,
+            ODOMETRO: item.fields.ODOMETRO
+        }));
+        
+        
+        // Mostrar los elementos por consola
+        //console.log("Elementos en la lista:", response.value);
+        console.log("Elementos en la lista:", filteredItems);
+        return response.value;
+    } catch (error) {
+        console.error("Error obteniendo los elementos de la lista:", error);
+        throw error;
+    }
 }
 
 // Leer el archivo Excel y crear un diccionario de mapeo
@@ -46,17 +66,60 @@ function createChassisToPatentMap(excelFilePath) {
         let chassis = row['N° CHASSIS'];
         let patent = row['PATENTE'];
         if (chassis && patent) {
-            // Asegurarse de que chassis sea una cadena de texto
             chassis = String(chassis);
-            patent = removeHyphens(patent);
-            // Extraer la parte relevante del número de chasis
-            const relevantChassisPart = chassis.slice(-8); // Asumiendo que la parte relevante son los últimos 8 caracteres
+            const relevantChassisPart = chassis.slice(-8);
             map[relevantChassisPart] = patent;
             map[chassis] = patent;
+
+            // Agregar patente sin guiones al mapa si no existe
+            const patentWithoutHyphens = patent.replace(/-/g, '');
+            if (!map[patentWithoutHyphens]) {
+                map[patentWithoutHyphens] = patent;
+            }
         }
     });
-
+    console.log("map:", map);
     return map;
+}
+
+// Función para normalizar la patente
+function normalizePatent(patent, chassisToPatentMap) {
+    console.log("patent:", patent);
+
+    // Si la patente ya tiene guiones, devolverla tal cual
+    if (patent.includes('-')) {
+        console.log("Patente ya tiene guiones:", patent);
+        return patent;
+    }
+
+    // Buscar la patente sin guiones en el diccionario
+    const normalizedPatent = chassisToPatentMap[patent];
+    if (normalizedPatent) {
+        console.log("Patente encontrada sin guiones en el diccionario:", normalizedPatent);
+        return normalizedPatent;
+    }
+    console.log("La patente", patent, "pasó el segundo if");
+
+    // Intentar buscar la patente con guiones
+    const patentWithHyphens = patent.slice(0, 4) + '-' + patent.slice(4);
+    console.log("Buscando patente con guiones:", patentWithHyphens);
+    const normalizedPatentWithHyphens = chassisToPatentMap[patentWithHyphens];
+    if (normalizedPatentWithHyphens) {
+        console.log("Patente encontrada con guiones en el diccionario:", normalizedPatentWithHyphens);
+        return normalizedPatentWithHyphens;
+    }
+    console.log("La patente", patent, "pasó el tercer if");
+
+    // Buscar la patente como subcadena en el diccionario
+    for (const key in chassisToPatentMap) {
+        if (key.includes(patent)) {
+            console.log("Patente encontrada como subcadena en el diccionario:", chassisToPatentMap[key]);
+            return chassisToPatentMap[key];
+        }
+    }
+
+    // Si no se encuentra en el diccionario, devolver la patente original
+    return patent;
 }
 
 // Leer datos desde múltiples archivos JSON y combinarlos en uno solo
@@ -78,18 +141,10 @@ function readJsonData(chassisToPatentMap) {
             return;
         }
 
-        // Verificar que jsonData sea un array y que contenga objetos válidos
         if (Array.isArray(jsonData)) {
             jsonData.forEach(item => {
                 if (item && typeof item === 'object' && !Array.isArray(item)) {
-                    // Reemplazar el número de chasis con la patente si es necesario
-                    item.patent = removeHyphens(item.patent);
-                    const relevantChassisPart = item.patent.slice(-8);
-                    if (chassisToPatentMap[relevantChassisPart]) {
-                        item.patent = chassisToPatentMap[relevantChassisPart];
-                    } else if (chassisToPatentMap[item.patent]) {
-                        item.patent = chassisToPatentMap[item.patent];
-                    }
+                    item.patent = normalizePatent(item.patent, chassisToPatentMap);
                     combinedData.push(item);
                 } else {
                     console.warn(`Invalid item in file ${file}:`, item);
@@ -106,15 +161,13 @@ function readJsonData(chassisToPatentMap) {
 // Crear o obtener una lista de SharePoint y añadir columnas
 async function createOrGetSharePointList(siteId, listName, description) {
     try {
-        // Intenta obtener la lista primero
         const listResponse = await client.api(`/sites/${siteId}/lists`).filter(`displayName eq '${listName}'`).get();
 
         if (listResponse.value.length > 0) {
             console.log(`Lista encontrada: ${listResponse.value[0].id}`);
-            return listResponse.value[0].id; // Devuelve el ID si la lista ya existe
+            return listResponse.value[0].id;
         }
 
-        // Si la lista no existe, créala
         const newListData = {
             displayName: listName,
             columns: [
@@ -133,7 +186,6 @@ async function createOrGetSharePointList(siteId, listName, description) {
 
         const createResponse = await client.api(`/sites/${siteId}/lists`).post(newListData);
         console.log("Lista creada exitosamente:", createResponse);
-        // Indexar la columna 'PATENTE' después de crear la lista
         await indexColumn(siteId, createResponse.id, 'PATENTE');
         return createResponse.id;
     } catch (error) {
@@ -145,11 +197,7 @@ async function createOrGetSharePointList(siteId, listName, description) {
 // Función para indexar una columna de SharePoint
 async function indexColumn(siteId, listId, columnName) {
     try {
-        const columnUpdateResponse = await client
-            .api(`/sites/${siteId}/lists/${listId}/columns/${columnName}`)
-            .update({
-                indexed: true,
-            });
+        await client.api(`/sites/${siteId}/lists/${listId}/columns/${columnName}`).update({ indexed: true });
         console.log(`Columna '${columnName}' indexada exitosamente.`);
     } catch (error) {
         console.error(`Error indexando la columna '${columnName}':`, error);
@@ -171,11 +219,11 @@ async function getListItemByPatent(siteId, listId, patent) {
 // Crear o actualizar elementos en la lista de SharePoint
 async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
     try {
+        let contador = 0;
         for (const item of items) {
             const existingItem = await getListItemByPatent(siteId, listId, item.patent);
 
             if (existingItem) {
-                // Actualizar el elemento existente
                 const updatedItem = {
                     fields: {
                         PATENTE: item.patent,
@@ -187,13 +235,9 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                     }
                 };
 
-                await client
-                    .api(`/sites/${siteId}/lists/${listId}/items/${existingItem.id}`)
-                    .patch(updatedItem);
-
-                console.log(`Elemento actualizado: ${item.patent}`);
+                await client.api(`/sites/${siteId}/lists/${listId}/items/${existingItem.id}`).patch(updatedItem);
+                console.log(`Elemento actualizado: ${item.patent}`); contador++;
             } else {
-                // Crear un nuevo elemento
                 const newItem = {
                     fields: {
                         PATENTE: item.patent,
@@ -205,13 +249,10 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                     }
                 };
 
-                await client
-                    .api(`/sites/${siteId}/lists/${listId}/items`)
-                    .post(newItem);
-
-                console.log(`Elemento añadido a la lista: ${item.patent}`);
+                await client.api(`/sites/${siteId}/lists/${listId}/items`).post(newItem);
+                console.log(`Elemento añadido a la lista: ${item.patent}`); contador++;
             }
-        }
+        } console.log(`Se han actualizado ${contador} elementos en la lista de SharePoint.`);
     } catch (error) {
         console.error("Error añadiendo o actualizando elementos en la lista de SharePoint:", error);
     }
@@ -221,15 +262,14 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
 (async () => {
     try {
         const siteId = await getSiteId();
-        const listId = await createOrGetSharePointList(siteId, "GPS", "Lista con datos extraídos mediante scraping");
+        const listId = await createOrGetSharePointList(siteId, "GPS_PRUEBA", "Lista con datos extraídos mediante scraping");
 
-        // Crear el diccionario de mapeo desde el archivo Excel
-        const chassisToPatentMap = createChassisToPatentMap('./07_julio.xlsx');
-
-        // Leer y actualizar los datos JSON
+        const chassisToPatentMap = createChassisToPatentMap('./Vehiculos Grupo Ravazzano - Septiembre 24 FINAL1.xlsx');
         const data = readJsonData(chassisToPatentMap);
 
         await addOrUpdateItemsToSharePointList(siteId, listId, data);
+        //const items = await getItemsFromSharePointList(siteId, listId);
+        //console.log("Items en la lista de SharePoint:", items);
     } catch (error) {
         console.error("Error en la ejecución:", error);
     }
@@ -246,13 +286,3 @@ async function getSiteId() {
         throw error;
     }
 }
-
-/* 
-const normalizePatente = (patente) => {
-  if (typeof patente !== 'string') {
-    const stringPatente = String(patente); // Lo convierte a string si no lo es
-    return stringPatente;
-  }
-  return patente.replace(/-/g, '').toUpperCase(); // Elimina guiones y convierte a mayúsculas
-};
-*/

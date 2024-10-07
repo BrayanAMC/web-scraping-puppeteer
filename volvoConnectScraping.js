@@ -18,10 +18,12 @@ async function scraping() {
     }
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
             defaultViewport: null,
             protocolTimeout: 120000,
+            timeout: 60000,
+            protocolTimeout: 60000,
         slowMo: 200,
     });
 
