@@ -22,7 +22,7 @@ async function scraping() {
     console.log(`Password: ${password}`);
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         defaultViewport: null,
         protocolTimeout: 120000

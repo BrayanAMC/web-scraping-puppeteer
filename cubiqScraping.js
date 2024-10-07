@@ -17,11 +17,11 @@ async function scraping() {
         return;
     }
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
             defaultViewport: null,
             protocolTimeout: 120000,
-        slowMo: 200,
+        
     });
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
