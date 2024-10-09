@@ -32,6 +32,23 @@ const client = Client.init({
     },
 });
 
+// Obtener el ID de una lista de SharePoint por su nombre
+async function getListIdByName(siteId, listName) {
+    try {
+        const listResponse = await client.api(`/sites/${siteId}/lists`).filter(`displayName eq '${listName}'`).get();
+
+        if (listResponse.value.length > 0) {
+            console.log(`Lista encontrada: ${listResponse.value[0].id}`);
+            return listResponse.value[0].id;
+        } else {
+            throw new Error(`Lista con nombre '${listName}' no encontrada.`);
+        }
+    } catch (error) {
+        console.error("Error obteniendo el ID de la lista:", error);
+        throw error;
+    }
+}
+
 async function getItemsFromSharePointList(siteId, listId) {
     try {
         // Hacer la solicitud GET para obtener los elementos de la lista
@@ -54,72 +71,79 @@ async function getItemsFromSharePointList(siteId, listId) {
     }
 }
 
-// Leer el archivo Excel y crear un diccionario de mapeo
-function createChassisToPatentMap(excelFilePath) {
-    const workbook = xlsx.readFile(excelFilePath);
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    const data = xlsx.utils.sheet_to_json(sheet);
-
-    const map = {};
-    data.forEach(row => {
-        let chassis = row['N° CHASSIS'];
-        let patent = row['PATENTE'];
-        if (chassis && patent) {
-            chassis = String(chassis);
-            const relevantChassisPart = chassis.slice(-8);
-            map[relevantChassisPart] = patent;
-            map[chassis] = patent;
+// Leer datos desde una lista de SharePoint y crear un diccionario de mapeo
+async function createChassisToPatentMap(siteId, listId) {
+    try {
+      let items = [];
+      let hasMoreItems = true;
+      let nextLink = null;
+  
+      while (hasMoreItems) {
+        const response = await client.api(`/sites/${siteId}/lists/${listId}/items`)
+          .expand('fields')
+          .top(500) // Ajusta este valor según tus necesidades
+          .skipToken(nextLink)
+          .get();
+  
+        items = items.concat(response.value);
+        hasMoreItems = response.hasMore;
+        nextLink = response.nextLink;
+      }
+  
+      console.log("Total de elementos obtenidos:", items.length);
+      console.log("items de la api", items[0]);
+      const map = {};
+      let contador = 0;
+  
+      items.forEach(item => {
+        //let chassis = item.fields['field_18']; //para la lista de FLOTA_BRANDA
+        //let patent = item.fields['field_11']; 
+        let chassis = item.fields['field_12'];
+        let patent = item.fields['field_5'];
+  
+        //console.log(`Chassis: ${chassis}, Patent: ${patent}`);
+  
+        if (patent) { // Verificar solo si la patente está presente
+            if (chassis) {
+                const relevantChassisPart = chassis.slice(-8);
+                map[relevantChassisPart] = patent;
+                map[chassis] = patent;
+            }
 
             // Agregar patente sin guiones al mapa si no existe
             const patentWithoutHyphens = patent.replace(/-/g, '');
             if (!map[patentWithoutHyphens]) {
                 map[patentWithoutHyphens] = patent;
             }
+            contador++;
         }
-    });
-    console.log("map:", map);
-    return map;
+      });
+      console.log("Diccionario de mapeo creado:", map);
+      console.log(`Se han añadido ${contador} elementos al diccionario de mapeo.`);
+      return map;
+    } catch (error) {
+      console.error("Error obteniendo datos de SharePoint:", error);
+      throw error;
+    }
 }
 
-// Función para normalizar la patente
+// Función para normalizar la patente `
 function normalizePatent(patent, chassisToPatentMap) {
-    console.log("patent:", patent);
+    console.log("Normalizing patent:", patent);
 
-    // Si la patente ya tiene guiones, devolverla tal cual
-    if (patent.includes('-')) {
-        console.log("Patente ya tiene guiones:", patent);
-        return patent;
+    // Eliminar cualquier guion de la patente
+    const normalizedPatent = patent.replace(/-/g, '');
+
+    // Buscar la patente normalizada en el diccionario
+    const mappedPatent = chassisToPatentMap[normalizedPatent];
+    if (mappedPatent) {
+        console.log("Patente encontrada en el diccionario:", mappedPatent);
+        return mappedPatent;
     }
 
-    // Buscar la patente sin guiones en el diccionario
-    const normalizedPatent = chassisToPatentMap[patent];
-    if (normalizedPatent) {
-        console.log("Patente encontrada sin guiones en el diccionario:", normalizedPatent);
-        return normalizedPatent;
-    }
-    console.log("La patente", patent, "pasó el segundo if");
-
-    // Intentar buscar la patente con guiones
-    const patentWithHyphens = patent.slice(0, 4) + '-' + patent.slice(4);
-    console.log("Buscando patente con guiones:", patentWithHyphens);
-    const normalizedPatentWithHyphens = chassisToPatentMap[patentWithHyphens];
-    if (normalizedPatentWithHyphens) {
-        console.log("Patente encontrada con guiones en el diccionario:", normalizedPatentWithHyphens);
-        return normalizedPatentWithHyphens;
-    }
-    console.log("La patente", patent, "pasó el tercer if");
-
-    // Buscar la patente como subcadena en el diccionario
-    for (const key in chassisToPatentMap) {
-        if (key.includes(patent)) {
-            console.log("Patente encontrada como subcadena en el diccionario:", chassisToPatentMap[key]);
-            return chassisToPatentMap[key];
-        }
-    }
-
-    // Si no se encuentra en el diccionario, devolver la patente original
-    return patent;
+    // Si no se encuentra en el diccionario, devolver la patente normalizada
+    console.log("No se pudo encontrar la patente en el diccionario, devolviendo la patente normalizada:", patent);
+    return null;
 }
 
 // Leer datos desde múltiples archivos JSON y combinarlos en uno solo
@@ -130,7 +154,9 @@ function readJsonData(chassisToPatentMap) {
     );
     
     let combinedData = [];
-
+    let contador = 0;
+    let contadorNormalizePatent = 0;
+    let failedPatents = [];
     jsonFiles.forEach(file => {
         const rawData = fs.readFileSync(path.join(jsonDirectory, file));
         let jsonData;
@@ -142,18 +168,35 @@ function readJsonData(chassisToPatentMap) {
         }
 
         if (Array.isArray(jsonData)) {
-            jsonData.forEach(item => {
+            
+            jsonData.forEach(async item => {
+                contador++;
                 if (item && typeof item === 'object' && !Array.isArray(item)) {
-                    item.patent = normalizePatent(item.patent, chassisToPatentMap);
-                    combinedData.push(item);
+                    const normalizedPatent = normalizePatent(item.patent, chassisToPatentMap);
+                    if (normalizedPatent) {
+                        contadorNormalizePatent++;
+                        item.patent = normalizedPatent;
+                        combinedData.push(item);
+                    } else {
+                        failedPatents.push(item.patent); // Agregar la patente fallida al array
+                    }
                 } else {
                     console.warn(`Invalid item in file ${file}:`, item);
                 }
             });
+            
         } else {
             console.warn(`File ${file} does not contain a valid array of objects.`);
         }
     });
+    if (failedPatents.length > 0) {
+        console.log("Patentes que no se pudieron normalizar:", failedPatents);
+    } else {
+        console.log("Todas las patentes se normalizaron correctamente.");
+    }
+
+    console.log(`Total de elementos procesados: ${contador}`);
+    console.log(`Total de patentes normalizadas: ${contador - failedPatents.length}`);
 
     return combinedData;
 }
@@ -220,6 +263,7 @@ async function getListItemByPatent(siteId, listId, patent) {
 async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
     try {
         let contador = 0;
+        console.log("items.lengh",items.length);
         for (const item of items) {
             const existingItem = await getListItemByPatent(siteId, listId, item.patent);
 
@@ -262,12 +306,12 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
 (async () => {
     try {
         const siteId = await getSiteId();
-        const listId = await createOrGetSharePointList(siteId, "GPS_PRUEBA", "Lista con datos extraídos mediante scraping");
-
-        const chassisToPatentMap = createChassisToPatentMap('./Vehiculos Grupo Ravazzano - Septiembre 24 FINAL1.xlsx');
+        const GpsListId = await createOrGetSharePointList(siteId, "GPS_PRUEBA", "Lista con datos extraídos mediante scraping");
+        const flotaListId = await getListIdByName(siteId, "07_JULIO_PRUEBA");
+        const chassisToPatentMap = await createChassisToPatentMap(siteId, flotaListId);
         const data = readJsonData(chassisToPatentMap);
 
-        await addOrUpdateItemsToSharePointList(siteId, listId, data);
+        //await addOrUpdateItemsToSharePointList(siteId, GpsListId, data);
         //const items = await getItemsFromSharePointList(siteId, listId);
         //console.log("Items en la lista de SharePoint:", items);
     } catch (error) {
