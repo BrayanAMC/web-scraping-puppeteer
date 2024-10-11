@@ -42,7 +42,8 @@ async function scraping() {
     await page.click('.MuiTypography-root.MuiTypography-body1');
     //estamos en la pagina que tiene ya las listas de los vehiculos
     let allVehiclesInfo = [];
-    let vehicles = await page.$$('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root.MuiLink-underlineAlways.esr9joz0.css-ehphi5')//refenencia  a la etiqueta a de cada patente, es una "lista"
+    await page.waitForSelector('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root')//espera a que carguen las patentes
+    let vehicles = await page.$$('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root')//refenencia  a la etiqueta a de cada patente, es una "lista"
     for (let i = 0; i < vehicles.length; i++) {// cambiar a vehicles.length
         await vehicles[i].click();
         console.log(`click en el vehiculo ${i+1}`);
@@ -100,8 +101,8 @@ async function scraping() {
         //fin logica para extraer informacion de cada vehiculo
         await page.goBack();
         //await new Promise(r => setTimeout(r, 1000));
-        //await page.waitForSelector('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root.MuiLink-underlineAlways.esr9joz0.css-ehphi5')
-        vehicles = await page.$$('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root.MuiLink-underlineAlways.esr9joz0.css-ehphi5')// se vuelve a obtener la lista de patentes
+        await page.waitForSelector('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root')
+        vehicles = await page.$$('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root')// se vuelve a obtener la lista de patentes
     }
     console.log(allVehiclesInfo);
     console.log(allVehiclesInfo.length);

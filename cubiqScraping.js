@@ -29,10 +29,12 @@ async function scraping() {
     await page.goto(urlCubiq, { waitUntil: 'networkidle2' });
     await page.type('#okta-signin-username', username);
     await page.type('#okta-signin-password', password);
+    await page.waitForSelector('#okta-signin-submit');
     await page.click('#okta-signin-submit');
     await new Promise(r => setTimeout(r, 12000));
     //estamos ya en la pagina que tiene las listas de los vehiculos
     let allVehiclesInfo = [];
+    await page.waitForSelector('.p-element.hoverable-row.p-selectable-row.ng-star-inserted')//espera a que carguen las patentes
     let vehicles = await page.$$('.p-element.hoverable-row.p-selectable-row.ng-star-inserted')//refenencia  a la etiqueta a de cada patente, es una "lista"
     
     for (let i = 0; i < vehicles.length; i++) {// cambiar a vehicles.length
@@ -63,6 +65,7 @@ async function scraping() {
         })
         allVehiclesInfo.push(newVehicleInfo);
         //fin logica para extraer informacion de cada vehiculo
+        await page.waitForSelector('.TEST_afsd_close.material-icons')//espera a que cargue el boton cerrar (X)
         await page.click('.TEST_afsd_close.material-icons')//click en boton cerrar (X)
     }
     console.log(allVehiclesInfo);
