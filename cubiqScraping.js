@@ -2,7 +2,11 @@ import puppeteer from "puppeteer";
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function scraping() {
     const startTime = process.hrtime();
@@ -71,8 +75,13 @@ async function scraping() {
     console.log(allVehiclesInfo);
     console.log(allVehiclesInfo.length);
     await browser.close();
-    // Guardar en JSON
-    const jsonPath = path.join('cubiq.json');
+
+    const outputDir = path.join(__dirname, 'output');
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    const jsonPath = path.join(outputDir, 'cubiq.json');
     fs.writeFileSync(jsonPath, JSON.stringify(allVehiclesInfo, null, 2));
 
     const endTime = process.hrtime(startTime);
