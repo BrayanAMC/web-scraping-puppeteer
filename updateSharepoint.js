@@ -91,15 +91,14 @@ async function createChassisToPatentMap(siteId, listId) {
       }
   
       console.log("Total de elementos obtenidos:", items.length);
-      console.log("items de la api", items[0]);
       const map = {};
       let contador = 0;
-  
+      //console.log("items", items[0]);
       items.forEach(item => {
-        //let chassis = item.fields['field_18']; //para la lista de FLOTA_BRANDA
-        //let patent = item.fields['field_11']; 
-        let chassis = item.fields['field_12'];
-        let patent = item.fields['field_5'];
+        let chassis = item.fields['field_19']; //para la lista de BASE_FLOTA
+        let patent = item.fields['field_11']; //para la lista de BASE_FLOTA
+        //let chassis = item.fields['field_12'];
+        //let patent = item.fields['field_5'];
   
         //console.log(`Chassis: ${chassis}, Patent: ${patent}`);
   
@@ -118,7 +117,7 @@ async function createChassisToPatentMap(siteId, listId) {
             contador++;
         }
       });
-      console.log("Diccionario de mapeo creado:", map);
+      //console.log("Diccionario de mapeo creado:", map);
       console.log(`Se han añadido ${contador} elementos al diccionario de mapeo.`);
       return map;
     } catch (error) {
@@ -307,11 +306,11 @@ async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
     try {
         const siteId = await getSiteId();
         const GpsListId = await createOrGetSharePointList(siteId, "GPS_PRUEBA", "Lista con datos extraídos mediante scraping");
-        const flotaListId = await getListIdByName(siteId, "07_JULIO_PRUEBA");
+        const flotaListId = await getListIdByName(siteId, "BASE_FLOTA");
         const chassisToPatentMap = await createChassisToPatentMap(siteId, flotaListId);
         const data = readJsonData(chassisToPatentMap);
 
-        //await addOrUpdateItemsToSharePointList(siteId, GpsListId, data);
+        await addOrUpdateItemsToSharePointList(siteId, GpsListId, data);
         //const items = await getItemsFromSharePointList(siteId, listId);
         //console.log("Items en la lista de SharePoint:", items);
     } catch (error) {
