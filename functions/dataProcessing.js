@@ -62,7 +62,7 @@ export function normalizePatent(patent, chassisToPatentMap) {
 }
 
 export function readJsonData(chassisToPatentMap) {
-    const jsonDirectory = './';
+    const jsonDirectory = '../puppeteer-overview/output';
     const jsonFiles = fs.readdirSync(jsonDirectory).filter(file => 
         file.endsWith('.json') && !['package-lock.json', 'package.json', 'tsconfig.json'].includes(file)
     );

@@ -1,0 +1,314 @@
+[
+  {
+    "patent": "Congelado",
+    "location": null,
+    "odometer": "682 km",
+    "hourometer": "6581.45 h",
+    "lastUpdate": "11/10/2024 14:22:22",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "LRSH-38",
+    "location": "Calle Francisco San Ramón, Inca De Oro, Chañaral, Chile",
+    "odometer": "189161 km",
+    "hourometer": "4881.88 h",
+    "lastUpdate": "11/10/2024 13:36:14",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "LZRC-23",
+    "location": "5, Taltal, Antofagasta, Chile",
+    "odometer": "341562 km",
+    "hourometer": "6793.4 h",
+    "lastUpdate": "06/10/2024 19:42:24",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "LZRC-25",
+    "location": "Pasaje Francisco J. Téllez, Inca De Oro, Chañaral, Chile",
+    "odometer": "355340 km",
+    "hourometer": "7016.77 h",
+    "lastUpdate": "11/10/2024 13:48:53",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "LZRC-26",
+    "location": "Avenida Los Carrera, Copiapó, Chile",
+    "odometer": "265373 km",
+    "hourometer": "5626.08 h",
+    "lastUpdate": "11/10/2024 08:45:24",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PDCJ-90",
+    "location": "5, Vallenar, Huasco, Chile",
+    "odometer": "505195 km",
+    "hourometer": "8284.18 h",
+    "lastUpdate": "11/10/2024 14:22:59",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PFRZ-39",
+    "location": "Avenida Los Carrera, Copiapó, Chile",
+    "odometer": "20714 km",
+    "hourometer": "730.83 h",
+    "lastUpdate": "24/09/2024 17:29:52",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PHXY-13",
+    "location": "B-940, Taltal, Antofagasta, Chile",
+    "odometer": "423743 km",
+    "hourometer": "6983.81 h",
+    "lastUpdate": "11/10/2024 12:44:32",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PKBF-57",
+    "location": "Calle Los Carpinteros, Coquimbo, Elqui, Chile",
+    "odometer": "245104 km",
+    "hourometer": "2704.85 h",
+    "lastUpdate": "11/10/2024 13:31:14",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PYDG-60",
+    "location": null,
+    "odometer": "104493 km",
+    "hourometer": "2859.57 h",
+    "lastUpdate": "11/10/2024 13:30:53",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PYRY-25",
+    "location": "Calle Los Carpinteros, Coquimbo, Elqui, Chile",
+    "odometer": "161925 km",
+    "hourometer": "3880.91 h",
+    "lastUpdate": "11/10/2024 14:04:39",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PYRY-31",
+    "location": "Calle El Mirador Del Cerro Grande, La Serena, Elqui, Chile",
+    "odometer": "70833 km",
+    "hourometer": "268.41 h",
+    "lastUpdate": "11/10/2024 13:04:21",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PYRY-34",
+    "location": "Balmaceda 2355, Calama, El Loa, Chile",
+    "odometer": "181933 km",
+    "hourometer": "1372.24 h",
+    "lastUpdate": "11/10/2024 13:13:54",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "PYST-34",
+    "location": "Ex Ruta 43, Coquimbo, Elqui, Chile",
+    "odometer": "160774 km",
+    "hourometer": "11496.27 h",
+    "lastUpdate": "03/09/2024 18:33:14",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RCBJ-28",
+    "location": "31-ch, Copiapó, Chile",
+    "odometer": "93721 km",
+    "hourometer": "3231.93 h",
+    "lastUpdate": "11/10/2024 13:28:39",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RCBJ-31",
+    "location": "Calle Los Carpinteros, Coquimbo, Elqui, Chile",
+    "odometer": "88654 km",
+    "hourometer": "2121.54 h",
+    "lastUpdate": "11/10/2024 13:24:03",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "Refrigerado 1 y 2",
+    "location": "Calle Los Carpinteros, Coquimbo, Elqui, Chile",
+    "odometer": "1240 km",
+    "hourometer": "6577.65 h",
+    "lastUpdate": "11/10/2024 14:23:47",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RYFW-86",
+    "location": "5, Taltal, Antofagasta, Chile",
+    "odometer": "35563 km",
+    "hourometer": "267.16 h",
+    "lastUpdate": "10/10/2024 20:45:36",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RYFW-87",
+    "location": "5, Copiapó, Chile",
+    "odometer": "86587 km",
+    "hourometer": "1278.98 h",
+    "lastUpdate": "11/10/2024 14:23:19",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RYJD-51",
+    "location": "Calle Los Carpinteros, Coquimbo, Elqui, Chile",
+    "odometer": "32223 km",
+    "hourometer": "745.79 h",
+    "lastUpdate": "11/10/2024 13:17:54",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RYJD-52",
+    "location": "C-327, Copiapó, Chile",
+    "odometer": "37464 km",
+    "hourometer": "515.94 h",
+    "lastUpdate": "11/10/2024 13:35:19",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RYYB-29",
+    "location": "5, Vallenar, Huasco, Chile",
+    "odometer": "41753 km",
+    "hourometer": "196.23 h",
+    "lastUpdate": "11/10/2024 14:23:18",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "RYYD-48",
+    "location": "Calle Los Carpinteros, Coquimbo, Elqui, Chile",
+    "odometer": "48782 km",
+    "hourometer": "505.24 h",
+    "lastUpdate": "11/10/2024 14:15:10",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SDFJ-53",
+    "location": "5, Taltal, Antofagasta, Chile",
+    "odometer": "240827 km",
+    "hourometer": "4024.75 h",
+    "lastUpdate": "11/10/2024 13:29:47",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SFHS-82",
+    "location": "B-940, Taltal, Antofagasta, Chile",
+    "odometer": "105494 km",
+    "hourometer": "2042.95 h",
+    "lastUpdate": "11/10/2024 10:20:48",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SFHS-83",
+    "location": "Aceso a Observatorio El Tololo, Chile",
+    "odometer": "54616 km",
+    "hourometer": "1456.41 h",
+    "lastUpdate": "11/10/2024 13:12:01",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SFRK-65",
+    "location": "Calle Alejandro Díaz, Coquimbo, Elqui, Chile",
+    "odometer": "44103 km",
+    "hourometer": "703.7 h",
+    "lastUpdate": "11/10/2024 14:04:21",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SJSY-73",
+    "location": "Ramón Freire 572, Copiapó, Chile",
+    "odometer": "96531 km",
+    "hourometer": "1851.92 h",
+    "lastUpdate": "11/10/2024 13:05:35",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SRCV-66",
+    "location": "D-605, Punitaqui, Limarí, Chile",
+    "odometer": "20778 km",
+    "hourometer": "5241.53 h",
+    "lastUpdate": "11/10/2024 13:53:21",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SVYV-57",
+    "location": "B-955, Taltal, Antofagasta, Chile",
+    "odometer": "160254 km",
+    "hourometer": "6560.72 h",
+    "lastUpdate": "11/10/2024 12:37:29",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SVYV-73",
+    "location": "B-940, Taltal, Antofagasta, Chile",
+    "odometer": "140786 km",
+    "hourometer": "3034.14 h",
+    "lastUpdate": "11/10/2024 14:15:22",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SVYY-51",
+    "location": "Pasaje David Arellano, Inca De Oro, Chañaral, Chile",
+    "odometer": "137068 km",
+    "hourometer": "2524.7 h",
+    "lastUpdate": "11/10/2024 12:58:44",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "SXDH-96",
+    "location": "Pasaje Francisco J. Téllez, Inca De Oro, Chañaral, Chile",
+    "odometer": "180751 km",
+    "hourometer": "3894.66 h",
+    "lastUpdate": "11/10/2024 14:20:47",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "TBDG-40",
+    "location": "5, Taltal, Antofagasta, Chile",
+    "odometer": "60210 km",
+    "hourometer": "1524.21 h",
+    "lastUpdate": "11/10/2024 14:23:11",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "TCTW-12",
+    "location": "Callejón Ojancos, Tierra Amarilla, Copiapó, Chile",
+    "odometer": "3690 km",
+    "hourometer": "164.06 h",
+    "lastUpdate": "11/10/2024 13:14:50",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "TCTW-13",
+    "location": "Calle Uno 934, Tierra Amarilla, Copiapó, Chile",
+    "odometer": "6490 km",
+    "hourometer": "252.47 h",
+    "lastUpdate": "11/10/2024 14:21:35",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "TKZV-49",
+    "location": "24, Tocopilla, Chile",
+    "odometer": "27219 km",
+    "hourometer": "537.17 h",
+    "lastUpdate": "11/10/2024 07:39:02",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "TKZV-50",
+    "location": "Avenida 18 De Septiembre, Tocopilla, Chile",
+    "odometer": "28319 km",
+    "hourometer": "750.14 h",
+    "lastUpdate": "11/10/2024 06:57:43",
+    "source": "Orvis GPS"
+  },
+  {
+    "patent": "TKZY-47",
+    "location": "Calle Pedro Aguirre Cerda, Coquimbo, Elqui, Chile",
+    "odometer": "5872 km",
+    "hourometer": "1156.27 h",
+    "lastUpdate": "11/10/2024 13:48:25",
+    "source": "Orvis GPS"
+  }
+]

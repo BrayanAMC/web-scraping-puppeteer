@@ -1,10 +1,12 @@
 import puppeteer from "puppeteer";
 import dotenv from 'dotenv';
-import XLSX from 'xlsx';
 import path from 'path';
 import fs from 'fs';
-
+import { fileURLToPath } from 'url';
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function scraping() {
     const startTime = process.hrtime();
@@ -88,7 +90,6 @@ async function scraping() {
             }
         }
         await new Promise(r => setTimeout(r, 10000));
-        
         previousHeight = currentHeight;
         currentHeight = await page.evaluate(() => {
             const scrollableContainer = document.querySelector('[data-test="ftbody"]');
@@ -110,7 +111,12 @@ async function scraping() {
     console.log(items.length);
     await browser.close();
     // Guardar en JSON
-    const jsonPath = path.join('orvisgps.json');
+    const outputDir = path.join(__dirname, 'output');
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    const jsonPath = path.join(outputDir, 'orvisgps.json');
     fs.writeFileSync(jsonPath, JSON.stringify(items, null, 2));
 
     const endTime = process.hrtime(startTime);

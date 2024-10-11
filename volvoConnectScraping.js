@@ -2,7 +2,11 @@ import puppeteer from "puppeteer";
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 async function scraping() {
     const startTime = process.hrtime();
@@ -46,8 +50,6 @@ async function scraping() {
     let vehicles = await page.$$('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root')//refenencia  a la etiqueta a de cada patente, es una "lista"
     for (let i = 0; i < vehicles.length; i++) {// cambiar a vehicles.length
         await vehicles[i].click();
-        console.log(`click en el vehiculo ${i+1}`);
-        //await new Promise(r => setTimeout(r, 1000));
         //logica para extraer informacion de cada vehiculo
         await page.waitForSelector('[data-testid="vehicleDetailsTab"]')
         await page.click('[data-testid="vehicleDetailsTab"]')//click en pestaña info vehiculo
@@ -81,7 +83,7 @@ async function scraping() {
     
             return `${day}/${month}/${year} ${hours}:${minutes}:00`;
         }
-        console.log("lastUpdateElement", lastUpdateElement.innerText);    
+
         const patent = patentElement ? patentElement.innerText : null;
         const location = locationElement ? locationElement.innerText : null;
         const odometer = odometerElement ? odometerElement.innerText + ' km' : null;
@@ -107,8 +109,14 @@ async function scraping() {
     console.log(allVehiclesInfo);
     console.log(allVehiclesInfo.length);
     await browser.close();
-    // Guardar en JSON
-    const jsonPath = path.join('volvoConnect.json');
+
+    const outputDir = path.join(__dirname, 'output');
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    // Guardar en JSON en la carpeta output
+    const jsonPath = path.join(outputDir, 'volvoConnect.json');
     fs.writeFileSync(jsonPath, JSON.stringify(allVehiclesInfo, null, 2));
 
     const endTime = process.hrtime(startTime);
