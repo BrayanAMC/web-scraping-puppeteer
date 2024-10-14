@@ -8,7 +8,42 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+function formatLastUpdate(lastUpdate) {
+    if (!lastUpdate || lastUpdate.trim() === "") {
+        return "Sin información";
+    }
+
+    const now = new Date();
+    let date;
+    let time = "00:00:00";
+    if (lastUpdate.includes("atrás") || lastUpdate.includes("hace")) {
+        const number = parseInt(lastUpdate.match(/\d+/)[0]);
+        if (lastUpdate.includes("horas")) {
+            date = new Date(now.getTime() - number * 60 * 60 * 1000);
+        } else if (lastUpdate.includes("día") || lastUpdate.includes("días")) {
+            date = new Date(now.getTime() - number * 24 * 60 * 60 * 1000);
+        }
+    } else {
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const parts = lastUpdate.split(" - ")[1].split(", ");
+        const [monthDayYear, hourMinute] = parts;
+        const [month, day, year] = monthDayYear.split(" ");
+        
+        if (hourMinute) {
+            time = hourMinute.includes(":") ? hourMinute : hourMinute + ":00"; // Añadimos los segundos si no están incluidos
+        }
+        
+        date = new Date(`${year}-${(months.indexOf(month) + 1).toString().padStart(2, '0')}-${day.padStart(2, '0')}T${time}`);
+    }
+
+    if (isNaN(date.getTime())) {
+        return "Fecha inválida";
+    }
+    return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()} 00:00:00`;
+}
+
 async function scraping() {
+
     const startTime = process.hrtime();
     const initialMemoryUsage = process.memoryUsage().heapUsed / 1024 / 1024;
 
@@ -53,17 +88,19 @@ async function scraping() {
             const hourometerElement = vehicleInfoElement.querySelector('.TEXT_tx_HOURS')//horometro
             const lastUpdateElement = vehicleInfoElement.querySelector('.TEST_tx_TIME.last-updated-time')//ultima actualizacion
 
-            const patent = patentElement ? patentElement.innerText : null;
-            const location = locationElement ? locationElement.innerText : null;
-            const odometer = odometerElement ? odometerElement.innerText + ' km' : null;
-            const hourometer = hourometerElement ? hourometerElement.innerText + ' h' : null;
-            const lastUpdate = lastUpdateElement ? lastUpdateElement.innerText : null;
+            let odometer = 'N/A km';
+            if (odometerElement.innerText.trim() !== 'N/A') {   
+                const miles = parseFloat(odometerElement.innerText.replace(/,/g, ''));
+                const kilometers = miles * 1.60934;
+                odometer = `${kilometers.toFixed(2)} km`;
+            }
+
             return {
-                patent,
-                location,
-                odometer,
-                hourometer,
-                lastUpdate,
+                patent: patentElement ? patentElement.innerText : null,
+                location: locationElement ? locationElement.innerText : 'N/A',
+                odometer: odometer,
+                hourometer: hourometerElement ? hourometerElement.innerText + ' h' : 'N/A h',
+                lastUpdate: lastUpdateElement ? lastUpdateElement.innerText : "",
                 source: 'Cubiq'
             };
         })
@@ -72,9 +109,16 @@ async function scraping() {
         await page.waitForSelector('.TEST_afsd_close.material-icons')//espera a que cargue el boton cerrar (X)
         await page.click('.TEST_afsd_close.material-icons')//click en boton cerrar (X)
     }
+    await browser.close();
+
+    // Formatea lastUpdate para cada vehículo
+    allVehiclesInfo = allVehiclesInfo.map(vehicle => {
+        vehicle.lastUpdate = formatLastUpdate(vehicle.lastUpdate);
+        return vehicle;
+    });
+
     console.log(allVehiclesInfo);
     console.log(allVehiclesInfo.length);
-    await browser.close();
 
     const outputDir = path.join(__dirname, 'output');
     if (!fs.existsSync(outputDir)) {
