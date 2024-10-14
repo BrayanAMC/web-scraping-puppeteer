@@ -4,7 +4,7 @@ import { createChassisToPatentMap, readJsonData } from './functions/dataProcessi
 (async () => {
     try {
         const siteId = await getSiteId();
-        const GpsListId = await createOrGetSharePointList(siteId, "GPS_PRUEBA", "Lista con datos extraídos mediante scraping");
+        const GpsListId = await createOrGetSharePointList(siteId, "GPS", "Lista con datos extraídos mediante scraping");
         const flotaListId = await getListIdByName(siteId, "BASE_FLOTA");
         const chassisToPatentMap = await createChassisToPatentMap(siteId, flotaListId);
         const data = readJsonData(chassisToPatentMap);
