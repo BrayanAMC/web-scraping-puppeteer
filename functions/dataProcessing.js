@@ -5,14 +5,18 @@ import { client } from './authClient.js';
 export async function createChassisToPatentMap(siteId, listId) {
     try {
       let items = [];
+      let columns = [];
       let hasMoreItems = true;
       let nextLink = null;
   
       while (hasMoreItems) {
         const response = await client.api(`/sites/${siteId}/lists/${listId}/items`)
           .expand('fields').top(500).skipToken(nextLink).get();
+
+        const responseColumns = await client.api(`/sites/${siteId}/lists/${listId}/columns`).get();  
   
         items = items.concat(response.value);
+        columns = columns.concat(responseColumns.value);
         hasMoreItems = response.hasMore;
         nextLink = response.nextLink;
       }
@@ -20,10 +24,16 @@ export async function createChassisToPatentMap(siteId, listId) {
       console.log("Total de elementos obtenidos:", items.length);
       const map = {};
       let contador = 0;
-      //console.log("items", items[0]);
+      const columnMap = {};
+        columns.forEach(column => {
+            columnMap[column.displayName] = column.name;
+        });
+        const chassisField = columnMap['N_CHASSIS'];
+        const patentField = columnMap['PATENTE'];  
+      
       items.forEach(item => {
-        let chassis = item.fields['field_19']; //para la lista de BASE_FLOTA
-        let patent = item.fields['field_11']; //para la lista de BASE_FLOTA
+        let chassis = item.fields[chassisField]; //para la lista de BASE_FLOTA
+        let patent = item.fields[patentField]; //para la lista de BASE_FLOTA
         if (patent) { // Verificar solo si la patente está presente
             if (chassis) {
                 const relevantChassisPart = chassis.slice(-8);
