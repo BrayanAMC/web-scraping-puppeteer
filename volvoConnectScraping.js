@@ -22,25 +22,36 @@ async function scraping() {
     }
 
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
             defaultViewport: null,
-            protocolTimeout: 120000,
             timeout: 60000,
             protocolTimeout: 60000,
-        slowMo: 200,
+            
+        
     });
 
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
     await page.goto(urlVolvoConnect, { waitUntil: 'networkidle2' });
+    await page.waitForSelector('#username');
     await page.type('#username', username);
+    await page.waitForSelector('#password');
     await page.type('#password', password);
     await page.waitForSelector('[data-testid="login-button"]');
     await page.click('[data-testid="login-button"]');
-    await page.waitForSelector('#main-menu-button');
-    await page.click('#main-menu-button');
-    await page.waitForSelector('[data-testid="pros-assets-icon"]');
+    await new Promise(r => setTimeout(r, 10000));
+    await page.waitForSelector('[data-testid="main-menu-toggle"]');
+    //await page.click('[data-testid="main-menu-toggle"]');
+    await page.evaluate(() => {
+        const element = document.querySelector('[data-testid="main-menu-toggle"]');
+        if (element) {
+            element.click();
+        } else {
+            console.log('Element not found');
+        }
+    });
+    await page.waitForSelector('[data-testid="pros-assets-icon"]', { timeout: 60000 });
     await page.click('[data-testid="pros-assets-icon"]');
     await page.waitForSelector('.MuiTypography-root.MuiTypography-body1');
     await page.click('.MuiTypography-root.MuiTypography-body1');
@@ -53,7 +64,7 @@ async function scraping() {
         //logica para extraer informacion de cada vehiculo
         await page.waitForSelector('[data-testid="vehicleDetailsTab"]')
         await page.click('[data-testid="vehicleDetailsTab"]')//click en pestaña info vehiculo
-        await new Promise(r => setTimeout(r, 1000));//si es menor a 1000 no carga la ubicacion
+        await new Promise(r => setTimeout(r, 2000));//si es menor a 1000 no carga la ubicacion
         //aqui se extrae el div que tiene toda la informacion de interes y se retorna
         const newVehicleInfo = await page.evaluate(() => {//entra al HTML
         const vehicleInfoElement = document.querySelector('[data-testid="VehicleDetails-body"]');//referencia al div con toda la informacion del vehiculo
