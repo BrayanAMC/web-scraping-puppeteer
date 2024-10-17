@@ -41,7 +41,8 @@ export async function createOrGetSharePointList(siteId, listName, description) {
                 { name: "ODOMETRO", text: {} },
                 { name: "HOROMETRO", text: {} },
                 { name: "ULTIMA_ACTUALIZACION", text: {} },
-                { name: "FUENTE", text: {} }
+                { name: "FUENTE", text: {} },
+                { name: "COSTO_GPS", number: {} }
             ],
             list: {
                 template: "genericList"
@@ -81,10 +82,23 @@ export async function getListItemByPatent(siteId, listId, patent) {
 
 export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
     try {
+        function determinarCosto(source) {
+            switch (source) {
+                case 'Cubiq':
+                    return 0; 
+                case 'Volvo Connect':
+                    return 0; 
+                case 'Orvis GPS':
+                    return 0.67; 
+                default:
+                    return 0; 
+            }
+        }
         let contador = 0;
         console.log("items.lengh",items.length);
         for (const item of items) {
             const existingItem = await getListItemByPatent(siteId, listId, item.patent);
+            const costoGPS = determinarCosto(item.source);
             if (existingItem) {
                 const updatedItem = {
                     fields: {
@@ -93,7 +107,8 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                         ODOMETRO: item.odometer,
                         HOROMETRO: item.hourometer,
                         ULTIMA_ACTUALIZACION: item.lastUpdate,
-                        FUENTE: item.source
+                        FUENTE: item.source,
+                        COSTO_GPS: costoGPS
                     }
                 };
                 await client.api(`/sites/${siteId}/lists/${listId}/items/${existingItem.id}`).patch(updatedItem);
@@ -106,7 +121,8 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                         ODOMETRO: item.odometer,
                         HOROMETRO: item.hourometer,
                         ULTIMA_ACTUALIZACION: item.lastUpdate,
-                        FUENTE: item.source
+                        FUENTE: item.source,
+                        COSTO_GPS: costoGPS
                     }
                 };
                 await client.api(`/sites/${siteId}/lists/${listId}/items`).post(newItem);
