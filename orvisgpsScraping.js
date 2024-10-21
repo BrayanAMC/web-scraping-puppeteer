@@ -25,7 +25,7 @@ async function scraping() {
 
     const browser = await puppeteer.launch({
         headless: true,
-        slowMo: 200,
+        slowMo: 5,
         timeout: 60000,
         protocolTimeout: 60000,
         //args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -40,7 +40,7 @@ async function scraping() {
     await page.type('#passw', password);
     await page.waitForSelector('#submit');
     await page.click('#submit');
-    await new Promise(r => setTimeout(r, 15000));
+    await new Promise(r => setTimeout(r, 5000));
     
     let items = [];
     const uniquePatents = new Set();
@@ -89,7 +89,7 @@ async function scraping() {
                 items.push(additionalInfo);
             }
         }
-        await new Promise(r => setTimeout(r, 10000));
+        await new Promise(r => setTimeout(r, 5000));
         previousHeight = currentHeight;
         currentHeight = await page.evaluate(() => {
             const scrollableContainer = document.querySelector('[data-test="ftbody"]');

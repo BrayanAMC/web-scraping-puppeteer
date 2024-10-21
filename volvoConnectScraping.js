@@ -22,11 +22,12 @@ async function scraping() {
     }
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
             defaultViewport: null,
             timeout: 60000,
             protocolTimeout: 60000,
+            slowMo: 5
             
         
     });
@@ -52,7 +53,15 @@ async function scraping() {
         }
     });
     await page.waitForSelector('[data-testid="pros-assets-icon"]', { timeout: 60000 });
-    await page.click('[data-testid="pros-assets-icon"]');
+    await page.evaluate(() => {
+        const element = document.querySelector('[data-testid="pros-assets-icon"]');
+        if (element) {
+            element.click();
+        } else {
+            console.log('Element not found');
+        }
+    });
+    //await page.click('[data-testid="pros-assets-icon"]');
     await page.waitForSelector('.MuiTypography-root.MuiTypography-body1');
     await page.click('.MuiTypography-root.MuiTypography-body1');
     //estamos en la pagina que tiene ya las listas de los vehiculos

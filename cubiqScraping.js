@@ -61,7 +61,8 @@ async function scraping() {
             defaultViewport: null,
             timeout: 60000,
             protocolTimeout: 60000,
-        slowMo: 200,
+            slowMo: 5
+        
     });
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 });
@@ -77,6 +78,7 @@ async function scraping() {
     let vehicles = await page.$$('.p-element.hoverable-row.p-selectable-row.ng-star-inserted')//refenencia  a la etiqueta a de cada patente, es una "lista"
     
     for (let i = 0; i < vehicles.length; i++) {// cambiar a vehicles.length
+        await page.waitForSelector('.p-element.hoverable-row.p-selectable-row.ng-star-inserted');//espera a que carguen las patentes
         await vehicles[i].click();
         await new Promise(r => setTimeout(r, 2000));
         const newVehicleInfo = await page.evaluate(() => {//entra al HTML
@@ -106,8 +108,16 @@ async function scraping() {
         })
         allVehiclesInfo.push(newVehicleInfo);
         //fin logica para extraer informacion de cada vehiculo
+        await new Promise(r => setTimeout(r, 1000));
         await page.waitForSelector('.TEST_afsd_close.material-icons')//espera a que cargue el boton cerrar (X)
-        await page.click('.TEST_afsd_close.material-icons')//click en boton cerrar (X)
+        await page.evaluate(() => {
+            const element = document.querySelector('.TEST_afsd_close.material-icons');
+            if (element) {
+                element.click();
+            } else {
+                console.log('Element not found');
+            }
+        });
     }
     await browser.close();
 
