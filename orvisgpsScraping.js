@@ -24,7 +24,7 @@ async function scraping() {
     console.log(`Password: ${password}`);
 
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         slowMo: 5,
         timeout: 60000,
         protocolTimeout: 60000,
@@ -57,9 +57,10 @@ async function scraping() {
             await row.evaluate(node => node.scrollIntoView());
             await row.hover();
             await new Promise(r => setTimeout(r, 2000));
+            await page.waitForFunction(() => document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK') && document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK').innerText !== '');
 
             // Extraer la información del pop-up
-            const additionalInfo = await page.evaluate(() => {
+            const additionalInfo = await page.evaluate(async () => {
                 const popup = document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK');
                 if (!popup) return null;
                 
@@ -68,6 +69,30 @@ async function scraping() {
                 const odometer = popup.querySelector('td.mileage_j0GY div');
                 const hourometer = popup.querySelector('td.engineHoursCounter_7QnA div');
                 const lastUpdate = popup.querySelector('div.lastUpdate_oGrS');
+                const coordButton = popup.querySelector('button.wui2-button.no-accent');
+                let latitude = null;
+                let longitude = null;
+                if(coordButton){
+                    const tempTextArea = document.createElement('textarea');
+                    document.body.appendChild(tempTextArea);
+                    const coordinates = await new Promise(resolve => {
+                        // Sobrescribir temporalmente el método writeText del clipboard
+                        window.navigator.clipboard.writeText = text => {
+                            resolve(text);
+                            return Promise.resolve();
+                        };
+                        coordButton.click();
+                    });
+                    document.body.removeChild(tempTextArea);
+                    if (coordinates) {
+                        const coords = coordinates.split(',').map(coord => parseFloat(coord.trim()));
+                        if (coords.length === 2) {
+                            [latitude, longitude] = coords;
+                        }
+                    }
+                }else{
+                    console.log('No se encontró el botón de coordenadas');
+                }
                 
                 const formatDate = (dateString) => {
                     const [date, time] = dateString.split(' ');
@@ -81,7 +106,9 @@ async function scraping() {
                     odometer: odometer ? odometer.innerText.trim() : null,
                     hourometer: hourometer ? hourometer.innerText.trim() : null,
                     lastUpdate: lastUpdate ? formatDate(lastUpdate.innerText.split('\n')[1].trim()) : null,
-                    source: 'Orvis GPS'
+                    source: 'Orvis GPS',
+                    latitude: latitude,
+                    longitude: longitude
                 };
             });
             if (additionalInfo && !uniquePatents.has(additionalInfo.patent)) {

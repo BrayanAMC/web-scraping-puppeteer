@@ -42,7 +42,9 @@ export async function createOrGetSharePointList(siteId, listName, description) {
                 { name: "HOROMETRO", text: {} },
                 { name: "ULTIMA_ACTUALIZACION", text: {} },
                 { name: "FUENTE", text: {} },
-                { name: "COSTO_GPS", number: {} }
+                { name: "COSTO_GPS", number: {} },
+                { name: "LATITUD", number: {} },
+                { name: "LONGITUD", number: {} }
             ],
             list: {
                 template: "genericList"
@@ -102,13 +104,15 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
             if (existingItem) {
                 const updatedItem = {
                     fields: {
-                        PATENTE: item.patent,
+                        PATENTE: item.patent,//TODO: revisar si es necesario actualizar la patente
                         LOCALIZACION_REAL: item.location,
                         ODOMETRO: item.odometer,
                         HOROMETRO: item.hourometer,
                         ULTIMA_ACTUALIZACION: item.lastUpdate,
                         FUENTE: item.source,
-                        COSTO_GPS: costoGPS
+                        COSTO_GPS: costoGPS,
+                        LATITUD: item.latitude,
+                        LONGITUD: item.longitude
                     }
                 };
                 await client.api(`/sites/${siteId}/lists/${listId}/items/${existingItem.id}`).patch(updatedItem);
@@ -122,7 +126,9 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                         HOROMETRO: item.hourometer,
                         ULTIMA_ACTUALIZACION: item.lastUpdate,
                         FUENTE: item.source,
-                        COSTO_GPS: costoGPS
+                        COSTO_GPS: costoGPS,
+                        LATITUD: item.latitude,
+                        LONGITUD: item.longitude
                     }
                 };
                 await client.api(`/sites/${siteId}/lists/${listId}/items`).post(newItem);

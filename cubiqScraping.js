@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 function formatLastUpdate(lastUpdate) {
-    if (!lastUpdate || lastUpdate.trim() === "") {
+    if (!lastUpdate || lastUpdate.trim() === "" || lastUpdate === "N/A") {
         return "Sin información";
     }
 
@@ -46,7 +46,6 @@ async function scraping() {
 
     const startTime = process.hrtime();
     const initialMemoryUsage = process.memoryUsage().heapUsed / 1024 / 1024;
-
     const urlCubiq = process.env.CUBIQ_URL;
     const username = process.env.CUBIQ_USER;
     const password = process.env.CUBIQ_PASSWORD;
@@ -74,59 +73,141 @@ async function scraping() {
     await new Promise(r => setTimeout(r, 12000));
     //estamos ya en la pagina que tiene las listas de los vehiculos
     let allVehiclesInfo = [];
+    const getCoordinates = (page) => {
+        return new Promise((resolve) => {
+            const handler = async (response) => {
+                const url = response.url();
+                const request = response.request();
+                if (url.includes('locationservicev2/api/v1/locations') && request.method() === 'GET') {
+                    try {
+                        const jsonResponse = await response.json();
+                        if (jsonResponse.coordinate && jsonResponse.coordinate.latitude && jsonResponse.coordinate.longitude) {
+                            resolve({
+                                latitude: jsonResponse.coordinate.latitude,
+                                longitude: jsonResponse.coordinate.longitude
+                            });
+                        } else {
+                            resolve({
+                                latitude: null,
+                                longitude: null
+                            });
+                        }
+                        page.off('response', handler);
+                    } catch (error) {
+                        console.error('Error al obtener la respuesta JSON:', error);
+                        resolve({
+                            latitude: null,
+                            longitude: null
+                        });
+                        page.off('response', handler);
+                    }
+                }
+            };
+            page.on('response', handler);
+        });
+    };
     await page.waitForSelector('.p-element.hoverable-row.p-selectable-row.ng-star-inserted')//espera a que carguen las patentes
     let vehicles = await page.$$('.p-element.hoverable-row.p-selectable-row.ng-star-inserted')//refenencia  a la etiqueta a de cada patente, es una "lista"
     
-    for (let i = 0; i < vehicles.length; i++) {// cambiar a vehicles.length
-        await page.waitForSelector('.p-element.hoverable-row.p-selectable-row.ng-star-inserted');//espera a que carguen las patentes
-        await vehicles[i].click();
-        await new Promise(r => setTimeout(r, 2000));
-        const newVehicleInfo = await page.evaluate(() => {//entra al HTML
-            const vehicleInfoElement = document.querySelector('.ng-tns-c88-7.p-dialog-content');//referencia al div con toda la informacion del vehiculo
-            if (!vehicleInfoElement) return null;
-            const patentElement = vehicleInfoElement.querySelector('.TEST_tx_SN > span')//patente
-            const locationElement = vehicleInfoElement.querySelector('.TEST_tx_LOC > span')//ubicacion
-            const odometerElement = vehicleInfoElement.querySelector('.TEST_tx_MILEAGE')//odometro
-            const hourometerElement = vehicleInfoElement.querySelector('.TEXT_tx_HOURS')//horometro
-            const lastUpdateElement = vehicleInfoElement.querySelector('.TEST_tx_TIME.last-updated-time')//ultima actualizacion
+    for (let i = 0; i < vehicles.length; i++) {
+        try {
+            await page.waitForSelector('.p-element.hoverable-row.p-selectable-row.ng-star-inserted');
+            const coordinatesPromise = getCoordinates(page);
+            await vehicles[i].click();
+            await new Promise(r => setTimeout(r, 2000));
+            
+            const newVehicleInfo = await page.evaluate(() => {
+                const vehicleInfoElement = document.querySelector('.ng-tns-c88-7.p-dialog-content');
+                if (!vehicleInfoElement) {
+                    console.log('No se encontró el elemento vehicleInfoElement');
+                    return null;
+                }
+                const patentElement = vehicleInfoElement.querySelector('.TEST_tx_SN > span');
+                const locationElement = vehicleInfoElement.querySelector('.TEST_tx_LOC > span');
+                const odometerElement = vehicleInfoElement.querySelector('.TEST_tx_MILEAGE');
+                const hourometerElement = vehicleInfoElement.querySelector('.TEXT_tx_HOURS');
+                const lastUpdateElement = vehicleInfoElement.querySelector('.TEST_tx_TIME.last-updated-time');
 
-            let odometer = 'N/A km';
-            if (odometerElement.innerText.trim() !== 'N/A') {   
-                const miles = parseFloat(odometerElement.innerText.replace(/,/g, ''));
-                const kilometers = miles * 1.60934;
-                odometer = `${kilometers.toFixed(2)} km`;
+                // Validar odómetro y realizar conversión
+                let odometer = 'N/A km';
+                if (odometerElement && odometerElement.innerText) {
+                    const odometerText = odometerElement.innerText.trim();
+                    if (odometerText !== 'N/A') {
+                        try {
+                            const miles = parseFloat(odometerText.replace(/,/g, ''));
+                            if (!isNaN(miles)) {
+                                const kilometers = miles * 1.60934;
+                                odometer = `${kilometers.toFixed(2)} km`;
+                            }
+                        } catch (error) {
+                            console.error('Error al convertir odómetro:', error);
+                        }
+                    }
+                }
+
+                return {
+                    patent: patentElement && patentElement.innerText ? patentElement.innerText : 'N/A',
+                    location: locationElement && locationElement.innerText ? locationElement.innerText : 'N/A',
+                    odometer: odometer,
+                    hourometer: hourometerElement && hourometerElement.innerText ? hourometerElement.innerText + ' h' : 'N/A h',
+                    lastUpdate: lastUpdateElement && lastUpdateElement.innerText ? lastUpdateElement.innerText : 'N/A',
+                    source: 'Cubiq'
+                };
+            });
+
+            // Verificar si se obtuvo información válida
+            if (!newVehicleInfo) {
+                console.log(`No se pudo obtener información para el vehículo ${i + 1}`);
+                continue;
             }
 
-            return {
-                patent: patentElement ? patentElement.innerText : null,
-                location: locationElement ? locationElement.innerText : 'N/A',
-                odometer: odometer,
-                hourometer: hourometerElement ? hourometerElement.innerText + ' h' : 'N/A h',
-                lastUpdate: lastUpdateElement ? lastUpdateElement.innerText : "",
-                source: 'Cubiq'
-            };
-        })
-        allVehiclesInfo.push(newVehicleInfo);
-        //fin logica para extraer informacion de cada vehiculo
-        await new Promise(r => setTimeout(r, 1000));
-        await page.waitForSelector('.TEST_afsd_close.material-icons')//espera a que cargue el boton cerrar (X)
-        await page.evaluate(() => {
-            const element = document.querySelector('.TEST_afsd_close.material-icons');
-            if (element) {
-                element.click();
+            const coordinates = await coordinatesPromise;
+            newVehicleInfo.latitude = coordinates.latitude;
+            newVehicleInfo.longitude = coordinates.longitude;
+            
+            //console.log("newVehicleInfo: ", newVehicleInfo);
+            allVehiclesInfo.push(newVehicleInfo);
+
+            await new Promise(r => setTimeout(r, 1000));
+            
+            // Validar que el botón de cerrar existe antes de hacer click
+            const closeButtonExists = await page.evaluate(() => {
+                const element = document.querySelector('.TEST_afsd_close.material-icons');
+                return !!element;
+            });
+
+            if (closeButtonExists) {
+                await page.waitForSelector('.TEST_afsd_close.material-icons');
+                await page.evaluate(() => {
+                    const element = document.querySelector('.TEST_afsd_close.material-icons');
+                    if (element) {
+                        element.click();
+                    }
+                });
             } else {
-                console.log('Element not found');
+                console.log('Botón de cerrar no encontrado');
             }
-        });
+            
+        } catch (error) {
+            console.error(`Error procesando vehículo ${i + 1}:`, error);
+            // Intentar cerrar el diálogo si está abierto
+            try {
+                await page.evaluate(() => {
+                    const element = document.querySelector('.TEST_afsd_close.material-icons');
+                    if (element) element.click();
+                });
+            } catch (closeError) {
+                console.error('Error al intentar cerrar el diálogo:', closeError);
+            }
+            continue; // Continuar con el siguiente vehículo
+        }
     }
     await browser.close();
 
-    // Formatea lastUpdate para cada vehículo
     allVehiclesInfo = allVehiclesInfo.map(vehicle => {
         vehicle.lastUpdate = formatLastUpdate(vehicle.lastUpdate);
         return vehicle;
     });
-
     console.log(allVehiclesInfo);
     console.log(allVehiclesInfo.length);
 
@@ -134,7 +215,6 @@ async function scraping() {
     if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
     }
-
     const jsonPath = path.join(outputDir, 'cubiq.json');
     fs.writeFileSync(jsonPath, JSON.stringify(allVehiclesInfo, null, 2));
 

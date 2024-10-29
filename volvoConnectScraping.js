@@ -85,6 +85,7 @@ async function scraping() {
         const odometerElement = vehicleInfoElement.querySelector('[data-testid="lastObservationOdometer"] div p span');
         const hourometerElement = vehicleInfoElement.querySelector('[data-testid="lastObservationEngineHours"] div p span span');
         const lastUpdateElement = vehicleInfoElement.querySelector('[data-testid="lastObservationDate"] div p span');
+        const coordinatesElement = vehicleInfoElement.querySelector('[data-testid="position-coordinates"] span');
 
         function formatDate(dateString) {
             console.log(dateString);
@@ -109,6 +110,8 @@ async function scraping() {
         const odometer = odometerElement ? odometerElement.innerText + ' km' : null;
         const hourometer = hourometerElement ? hourometerElement.innerText + ' h' : null;
         const lastUpdate = lastUpdateElement ? formatDate(lastUpdateElement.innerText) : null;
+        const coordinates = coordinatesElement ? coordinatesElement.innerText : null;
+        const [latitude, longitude] = coordinates ? coordinates.split(', ') : [null, null];
 
             return {
                 patent,
@@ -116,7 +119,9 @@ async function scraping() {
                 odometer,
                 hourometer,
                 lastUpdate,
-                source: 'Volvo Connect'
+                source: 'Volvo Connect',
+                latitude: latitude ? parseFloat(latitude) : null,
+                longitude: longitude ? parseFloat(longitude) : null
             }
         });
         allVehiclesInfo.push(newVehicleInfo);
