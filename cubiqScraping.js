@@ -129,7 +129,7 @@ async function scraping() {
                 const lastUpdateElement = vehicleInfoElement.querySelector('.TEST_tx_TIME.last-updated-time');
 
                 // Validar odómetro y realizar conversión
-                let odometer = 'N/A km';
+                let odometer = 'N/A';
                 if (odometerElement && odometerElement.innerText) {
                     const odometerText = odometerElement.innerText.trim();
                     if (odometerText !== 'N/A') {
@@ -137,7 +137,7 @@ async function scraping() {
                             const miles = parseFloat(odometerText.replace(/,/g, ''));
                             if (!isNaN(miles)) {
                                 const kilometers = miles * 1.60934;
-                                odometer = `${kilometers.toFixed(2)} km`;
+                                odometer = `${Math.floor(kilometers)}`; 
                             }
                         } catch (error) {
                             console.error('Error al convertir odómetro:', error);
@@ -149,7 +149,7 @@ async function scraping() {
                     patent: patentElement && patentElement.innerText ? patentElement.innerText : 'N/A',
                     location: locationElement && locationElement.innerText ? locationElement.innerText : 'N/A',
                     odometer: odometer,
-                    hourometer: hourometerElement && hourometerElement.innerText ? hourometerElement.innerText + ' h' : 'N/A h',
+                    hourometer: hourometerElement && hourometerElement.innerText ? hourometerElement.innerText : 'N/A',
                     lastUpdate: lastUpdateElement && lastUpdateElement.innerText ? lastUpdateElement.innerText : 'N/A',
                     source: 'Cubiq'
                 };

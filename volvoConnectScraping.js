@@ -83,7 +83,21 @@ async function scraping() {
                               vehicleInfoElement.querySelector('[data-testid="generalVIN"] > div > p');
         const locationElement = vehicleInfoElement.querySelector('[data-testid="lastObservationPosition"] div p span');
         const odometerElement = vehicleInfoElement.querySelector('[data-testid="lastObservationOdometer"] div p span');
+        let odometer = 'N/A';
+
+        if (odometerElement) {
+            const odometerText = odometerElement.innerText.trim();
+            // Eliminar el punto separador de miles y convertir a número entero
+            odometer = odometerText.replace(/\./g, '');
+        }
         const hourometerElement = vehicleInfoElement.querySelector('[data-testid="lastObservationEngineHours"] div p span span');
+        let hourometer = 'N/A';
+
+        if (hourometerElement) {
+            const hourometerText = hourometerElement.innerText.trim();
+            // Eliminar el punto separador de miles y la letra "h"
+            hourometer = hourometerText.replace(/\./g, '').replace(' h', '');
+        }
         const lastUpdateElement = vehicleInfoElement.querySelector('[data-testid="lastObservationDate"] div p span');
         const coordinatesElement = vehicleInfoElement.querySelector('[data-testid="position-coordinates"] span');
 
@@ -107,8 +121,8 @@ async function scraping() {
 
         const patent = patentElement ? patentElement.innerText : null;
         const location = locationElement ? locationElement.innerText : null;
-        const odometer = odometerElement ? odometerElement.innerText + ' km' : null;
-        const hourometer = hourometerElement ? hourometerElement.innerText + ' h' : null;
+        odometer = odometer ? odometer : null;
+        hourometer = hourometer ? hourometer : null;
         const lastUpdate = lastUpdateElement ? formatDate(lastUpdateElement.innerText) : null;
         const coordinates = coordinatesElement ? coordinatesElement.innerText : null;
         const [latitude, longitude] = coordinates ? coordinates.split(', ') : [null, null];

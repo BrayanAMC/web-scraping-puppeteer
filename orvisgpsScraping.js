@@ -58,7 +58,7 @@ async function scraping() {
             await row.hover();
             await new Promise(r => setTimeout(r, 2000));
             await page.waitForFunction(() => document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK') && document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK').innerText !== '');
-
+            await new Promise(r => setTimeout(r, 1500));
             // Extraer la información del pop-up
             const additionalInfo = await page.evaluate(async () => {
                 const popup = document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK');
@@ -66,8 +66,24 @@ async function scraping() {
                 
                 const patent = popup.querySelector('div.name_TOAI');
                 const location = popup.querySelector('div.addressName_WTb9');
-                const odometer = popup.querySelector('td.mileage_j0GY div');
-                const hourometer = popup.querySelector('td.engineHoursCounter_7QnA div');
+                const odometerElement = popup.querySelector('td.mileage_j0GY div');
+                let odometer = 'N/A km';
+                if (odometerElement) {
+                    const odometerText = odometerElement.innerText.trim();
+                    const odometerMatch = odometerText.match(/(\d+)/); // Captura solo los dígitos
+                    if (odometerMatch) {
+                        odometer = odometerMatch[1]; // Extrae el número capturado
+                    }
+                }
+                const hourometerElement = popup.querySelector('td.engineHoursCounter_7QnA div');
+                let hourometer = 'N/A h';
+                if (hourometerElement) {
+                    const hourometerText = hourometerElement.innerText.trim();
+                    const hourometerMatch = hourometerText.match(/(\d+)/); // Captura solo la parte entera
+                    if (hourometerMatch) {
+                        hourometer = hourometerMatch[1];
+                    }
+                }
                 const lastUpdate = popup.querySelector('div.lastUpdate_oGrS');
                 const coordButton = popup.querySelector('button.wui2-button.no-accent');
                 let latitude = null;
@@ -103,8 +119,8 @@ async function scraping() {
                 return {
                     patent: patent ? patent.innerText.trim() : null,
                     location: location ? location.innerText.trim() : null,
-                    odometer: odometer ? odometer.innerText.trim() : null,
-                    hourometer: hourometer ? hourometer.innerText.trim() : null,
+                    odometer: odometer? odometer : null,
+                    hourometer: hourometer ? hourometer : null,
                     lastUpdate: lastUpdate ? formatDate(lastUpdate.innerText.split('\n')[1].trim()) : null,
                     source: 'Orvis GPS',
                     latitude: latitude,
