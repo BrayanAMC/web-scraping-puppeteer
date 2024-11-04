@@ -44,7 +44,8 @@ export async function createOrGetSharePointList(siteId, listName, description) {
                 { name: "FUENTE", text: {} },
                 { name: "COSTO_GPS", number: {} },
                 { name: "LATITUD", number: {} },
-                { name: "LONGITUD", number: {} }
+                { name: "LONGITUD", number: {} },
+                { name: "FECHA_SCRAPING", text: {} }
             ],
             list: {
                 template: "genericList"
@@ -96,6 +97,11 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                     return 0; 
             }
         }
+        const ahora = new Date();
+        const dia = ahora.getDate().toString().padStart(2, '0');
+        const mes = (ahora.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses van de 0 a 11
+        const anio = ahora.getFullYear();
+        const fechaScraping = `${dia}/${mes}/${anio}`;
         let contador = 0;
         console.log("items.lengh",items.length);
         for (const item of items) {
@@ -112,7 +118,8 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                         FUENTE: item.source,
                         COSTO_GPS: costoGPS,
                         LATITUD: item.latitude,
-                        LONGITUD: item.longitude
+                        LONGITUD: item.longitude,
+                        FECHA_SCRAPING: fechaScraping
                     }
                 };
                 await client.api(`/sites/${siteId}/lists/${listId}/items/${existingItem.id}`).patch(updatedItem);
@@ -128,12 +135,61 @@ export async function addOrUpdateItemsToSharePointList(siteId, listId, items) {
                         FUENTE: item.source,
                         COSTO_GPS: costoGPS,
                         LATITUD: item.latitude,
-                        LONGITUD: item.longitude
+                        LONGITUD: item.longitude,
+                        FECHA_SCRAPING: fechaScraping
                     }
                 };
                 await client.api(`/sites/${siteId}/lists/${listId}/items`).post(newItem);
                 console.log(`Elemento añadido a la lista: ${item.patent}`); contador++;
             }
+        } console.log(`Se han actualizado ${contador} elementos en la lista de SharePoint.`);
+    } catch (error) {
+        console.error("Error añadiendo o actualizando elementos en la lista de SharePoint:", error);
+    }
+}
+
+export async function addOItemsToSharePointList(siteId, listId, items) {
+    try {
+        function determinarCosto(source) {
+            switch (source) {
+                case 'Cubiq':
+                    return 0; 
+                case 'Volvo Connect':
+                    return 0; 
+                case 'Orvis GPS':
+                    return 0.67; 
+                default:
+                    return 0; 
+            }
+        }
+        const ahora = new Date();
+        const dia = ahora.getDate().toString().padStart(2, '0');
+        const mes = (ahora.getMonth() + 1).toString().padStart(2, '0'); // +1 porque los meses van de 0 a 11
+        const anio = ahora.getFullYear();
+        const fechaScraping = `${dia}/${mes}/${anio}`;
+        let contador = 0;
+        console.log("items.lengh",items.length);
+        for (const item of items) {
+            //const existingItem = await getListItemByPatent(siteId, listId, item.patent);
+            const costoGPS = determinarCosto(item.source);
+            
+                const newItem = {
+                    fields: {
+                        PATENTE: item.patent,
+                        LOCALIZACION_REAL: item.location,
+                        ODOMETRO: item.odometer,
+                        HOROMETRO: item.hourometer,
+                        ULTIMA_ACTUALIZACION: item.lastUpdate,
+                        FUENTE: item.source,
+                        COSTO_GPS: costoGPS,
+                        LATITUD: item.latitude,
+                        LONGITUD: item.longitude,
+                        FECHA_SCRAPING: fechaScraping
+                    }
+                };
+                await client.api(`/sites/${siteId}/lists/${listId}/items`).post(newItem);
+                console.log(`Elemento añadido a la lista: ${item.patent}`); contador++;
+            
         } console.log(`Se han actualizado ${contador} elementos en la lista de SharePoint.`);
     } catch (error) {
         console.error("Error añadiendo o actualizando elementos en la lista de SharePoint:", error);

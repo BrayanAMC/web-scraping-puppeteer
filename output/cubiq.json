@@ -1,202 +1,252 @@
 [
   {
-    "patent": "AZ600586",
-    "location": "Punitaqui, Chile",
-    "odometer": "0 km",
-    "hourometer": "5101 h",
-    "lastUpdate": "Performance - 5 horas atrás",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "B5400413",
-    "location": "Tocopilla, Chile",
-    "odometer": "3742 km",
-    "hourometer": "2934 h",
-    "lastUpdate": "Performance - 5 horas atrás",
-    "source": "Cubiq"
-  },
-  {
     "patent": "LBF05461",
     "location": "Punitaqui, Chile",
-    "odometer": "4690 km",
-    "hourometer": "7387 h",
-    "lastUpdate": "Performance - 5 horas atrás",
-    "source": "Cubiq"
+    "odometer": "7658",
+    "hourometer": "7557",
+    "lastUpdate": "30/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
   },
   {
-    "patent": "H9P00157",
-    "location": "Juan Glasinovic 360, 1260000 Antofagasta, Antofagasta Region, Chile",
-    "odometer": "236 km",
-    "hourometer": "807 h",
-    "lastUpdate": "CAT Daily - 14 horas atrás",
-    "source": "Cubiq"
+    "patent": "AZ600586",
+    "location": "Punitaqui, Chile",
+    "odometer": "0",
+    "hourometer": "5189",
+    "lastUpdate": "30/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
   },
   {
     "patent": "MB800854",
-    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "221 km",
-    "hourometer": "2402 h",
-    "lastUpdate": "CAT Daily - 15 horas atrás",
-    "source": "Cubiq"
+    "location": "Camino Mina Las Luces, 1530000 Taltal, Antofagasta Region, Chile",
+    "odometer": "399",
+    "hourometer": "2432",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -25.67917,
+    "longitude": -70.56749
   },
   {
     "patent": "MPW02116",
     "location": "Avenida Miguel Lemeur 191, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "4611 km",
-    "hourometer": "3397 h",
-    "lastUpdate": "CAT Daily - 15 horas atrás",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "SMC01907",
-    "location": "Tiburcio Chandia 135, 1580265 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "243 km",
-    "hourometer": "8900 h",
-    "lastUpdate": "Performance - 19 horas atrás",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "ZBN31394",
-    "location": "Tierra Amarilla, Chile",
-    "odometer": "60 km",
-    "hourometer": "2229 h",
-    "lastUpdate": "CAT Daily - 20 horas atrás",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "SMC01884",
-    "location": "Punitaqui, Chile",
-    "odometer": "73 km",
-    "hourometer": "8927 h",
-    "lastUpdate": "Performance - 21 horas atrás",
-    "source": "Cubiq"
+    "odometer": "7423",
+    "hourometer": "3409",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.472,
+    "longitude": -70.26492
   },
   {
     "patent": "TJL05848",
     "location": "Punitaqui, Chile",
-    "odometer": "988 km",
-    "hourometer": "4583 h",
-    "lastUpdate": "Performance - 21 horas atrás",
-    "source": "Cubiq"
+    "odometer": "1622",
+    "hourometer": "4598",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
   },
   {
-    "patent": "B5400570",
-    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "2683 km",
-    "hourometer": "3713 h",
-    "lastUpdate": "CAT Daily - 1 hace un día",
-    "source": "Cubiq"
+    "patent": "SMC01884",
+    "location": "Punitaqui, Chile",
+    "odometer": "122",
+    "hourometer": "9009",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "MB800856",
+    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "350",
+    "hourometer": "1474",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49168,
+    "longitude": -70.30484
+  },
+  {
+    "patent": "ZBN31394",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "99",
+    "hourometer": "2318",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49352,
+    "longitude": -70.25726
   },
   {
     "patent": "ZBN31519",
     "location": "Tierra Amarilla, Chile",
-    "odometer": "21 km",
-    "hourometer": "4461 h",
-    "lastUpdate": "CAT Daily - 1 hace un día",
-    "source": "Cubiq"
+    "odometer": "53",
+    "hourometer": "4615",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49139,
+    "longitude": -70.25859
+  },
+  {
+    "patent": "B5400570",
+    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "4472",
+    "hourometer": "3798",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47009,
+    "longitude": -70.26302
+  },
+  {
+    "patent": "SMC01907",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "394",
+    "hourometer": "8971",
+    "lastUpdate": "29/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49,
+    "longitude": -70.25
+  },
+  {
+    "patent": "B5400413",
+    "location": "Tocopilla, Chile",
+    "odometer": "6226",
+    "hourometer": "2958",
+    "lastUpdate": "25/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -22.38,
+    "longitude": -70.21
+  },
+  {
+    "patent": "H9P00157",
+    "location": "Avenida Pedro Aguirre Cerda 7832, 1260000 Antofagasta, Antofagasta Region, Chile",
+    "odometer": "379",
+    "hourometer": "807",
+    "lastUpdate": "21/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -23.59713,
+    "longitude": -70.38863
   },
   {
     "patent": "L9P03066",
     "location": "Tocopilla, Chile",
-    "odometer": "1190 km",
-    "hourometer": "1558 h",
-    "lastUpdate": "hace CAT Daily - 3 días",
-    "source": "Cubiq"
+    "odometer": "1985",
+    "hourometer": "1626",
+    "lastUpdate": "17/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -22.28184,
+    "longitude": -70.16591
   },
   {
     "patent": "9SD00455",
     "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
-    "odometer": "0 km",
-    "hourometer": "5489 h",
-    "lastUpdate": "hace CAT Daily - 3 días",
-    "source": "Cubiq"
-  },
-  {
-    "patent": "MB800856",
-    "location": "Tierra Amarilla, Chile",
-    "odometer": "216 km",
-    "hourometer": "1439 h",
-    "lastUpdate": "hace CAT Daily - 4 días",
-    "source": "Cubiq"
+    "odometer": "0",
+    "hourometer": "5489",
+    "lastUpdate": "08/10/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.3454,
+    "longitude": -70.36414
   },
   {
     "patent": "AZ601000",
     "location": "Avenida Miguel Lemeur 169, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "0 km",
-    "hourometer": "464 h",
-    "lastUpdate": "CAT Daily - May 25 2024, 23:47",
-    "source": "Cubiq"
+    "odometer": "0",
+    "hourometer": "464",
+    "lastUpdate": "25/05/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47176,
+    "longitude": -70.26503
   },
   {
     "patent": "SBR01077",
     "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
-    "odometer": "5 km",
-    "hourometer": "10649 h",
-    "lastUpdate": "CAT Daily - May 6 2024, 12:33",
-    "source": "Cubiq"
+    "odometer": "8",
+    "hourometer": "10649",
+    "lastUpdate": "06/05/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.34453,
+    "longitude": -70.3649
   },
   {
     "patent": "L9P03485",
     "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "1046 km",
-    "hourometer": "1606 h",
-    "lastUpdate": "CAT Daily - Mar 3 2024, 21:00",
-    "source": "Cubiq"
+    "odometer": "1683",
+    "hourometer": "1606",
+    "lastUpdate": "03/03/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47037,
+    "longitude": -70.26341
   },
   {
     "patent": "L9P01106",
     "location": "Punitaqui, Chile",
-    "odometer": "0 km",
-    "hourometer": "4635 h",
-    "lastUpdate": "Performance - Jul 15 2022, 20:13",
-    "source": "Cubiq"
+    "odometer": "0",
+    "hourometer": "4635",
+    "lastUpdate": "15/07/2022 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
   },
   {
     "patent": "JPA04941",
     "location": "Camino a Mal Paso, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "2362 km",
-    "hourometer": "5375 h",
-    "lastUpdate": "Performance - Jul 11 2022, 10:28",
-    "source": "Cubiq"
+    "odometer": "3801",
+    "hourometer": "5375",
+    "lastUpdate": "11/07/2022 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.5,
+    "longitude": -70.27
   },
   {
     "patent": "LEW01784",
     "location": "N/A",
-    "odometer": "N/A km",
-    "hourometer": "N/A h",
-    "lastUpdate": "",
-    "source": "Cubiq"
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
   },
   {
     "patent": "9YZ01014",
     "location": "N/A",
-    "odometer": "N/A km",
-    "hourometer": "N/A h",
-    "lastUpdate": "",
-    "source": "Cubiq"
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
   },
   {
     "patent": "KT400381",
     "location": "N/A",
-    "odometer": "N/A km",
-    "hourometer": "N/A h",
-    "lastUpdate": "",
-    "source": "Cubiq"
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
   },
   {
     "patent": "KT400382",
     "location": "N/A",
-    "odometer": "N/A km",
-    "hourometer": "N/A h",
-    "lastUpdate": "",
-    "source": "Cubiq"
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
   },
   {
     "patent": "KT400389",
     "location": "N/A",
-    "odometer": "N/A km",
-    "hourometer": "N/A h",
-    "lastUpdate": "",
-    "source": "Cubiq"
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
   }
 ]
