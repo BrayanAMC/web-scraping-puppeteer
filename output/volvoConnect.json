@@ -2,58 +2,58 @@
   {
     "patent": "93KXG20D1SE603248",
     "location": "D-605, 1900000 Punitaqui, Coquimbo, Chile",
-    "odometer": "17541",
-    "hourometer": "1760",
-    "lastUpdate": "30/10/2024 2:16:00",
+    "odometer": "19174",
+    "hourometer": "1972",
+    "lastUpdate": "13/11/2024 9:17:00",
     "source": "Volvo Connect",
-    "latitude": -30.85475,
-    "longitude": -71.227072
+    "latitude": -30.854908,
+    "longitude": -71.226967
   },
   {
     "patent": "93KXG20D9SE603247",
     "location": "D-605, 1900000 Punitaqui, Coquimbo, Chile",
-    "odometer": "18641",
-    "hourometer": "1896",
-    "lastUpdate": "30/10/2024 3:28:00",
+    "odometer": "20230",
+    "hourometer": "2105",
+    "lastUpdate": "13/11/2024 9:53:00",
     "source": "Volvo Connect",
-    "latitude": -30.854565,
-    "longitude": -71.225134
+    "latitude": -30.854309,
+    "longitude": -71.227748
   },
   {
     "patent": "93KXG30G4SE601323",
     "location": "Tocopilla, Antofagasta, Chile",
-    "odometer": "32793",
-    "hourometer": "N/A",
-    "lastUpdate": "17/10/2024 10:34:00",
+    "odometer": "34325",
+    "hourometer": "2210",
+    "lastUpdate": "24/10/2024 8:17:00",
     "source": "Volvo Connect",
-    "latitude": -22.383276,
-    "longitude": -70.215722
+    "latitude": -22.386965,
+    "longitude": -70.213018
   },
   {
     "patent": "RWYY18",
-    "location": "Calle 5 Norte, 1700000 La Serena, Coquimbo, Chile",
-    "odometer": "89447",
-    "hourometer": "11530",
-    "lastUpdate": "14/10/2024 4:53:00",
+    "location": "D-605, 1900000 Punitaqui, Coquimbo, Chile",
+    "odometer": "90051",
+    "hourometer": "11603",
+    "lastUpdate": "13/11/2024 10:26:00",
     "source": "Volvo Connect",
-    "latitude": -29.917897,
-    "longitude": -71.261524
+    "latitude": -30.854097,
+    "longitude": -71.226836
   },
   {
     "patent": "RWYY19",
     "location": "D-605, 1900000 Punitaqui, Coquimbo, Chile",
-    "odometer": "89700",
-    "hourometer": "11440",
-    "lastUpdate": "30/10/2024 3:28:00",
+    "odometer": "91050",
+    "hourometer": "11628",
+    "lastUpdate": "13/11/2024 10:18:00",
     "source": "Volvo Connect",
-    "latitude": -30.854385,
-    "longitude": -71.227441
+    "latitude": -30.854518,
+    "longitude": -71.227989
   },
   {
     "patent": "SCCC30",
     "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "75137",
-    "hourometer": "6453",
+    "odometer": "76242",
+    "hourometer": "6552",
     "lastUpdate": "15/07/2023 4:43:00",
     "source": "Volvo Connect",
     "latitude": -27.470257,
@@ -62,12 +62,12 @@
   {
     "patent": "SCCC31",
     "location": "Tocopilla, Antofagasta, Chile",
-    "odometer": "N/A",
-    "hourometer": "N/A",
-    "lastUpdate": "14/10/2024 8:58:00",
+    "odometer": "87540",
+    "hourometer": "5267",
+    "lastUpdate": "11/11/2024 10:39:00",
     "source": "Volvo Connect",
-    "latitude": -22.383213,
-    "longitude": -70.215531
+    "latitude": -22.374306,
+    "longitude": -70.185673
   },
   {
     "patent": "SCCC32",
@@ -101,58 +101,58 @@
   },
   {
     "patent": "SDJD97",
-    "location": "Calle Balmaceda, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "118248",
-    "hourometer": "9618",
-    "lastUpdate": "30/10/2024 12:24:00",
+    "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
+    "odometer": "120883",
+    "hourometer": "9819",
+    "lastUpdate": "13/11/2024 10:00:00",
     "source": "Volvo Connect",
-    "latitude": -27.469935,
-    "longitude": -70.263521
+    "latitude": -27.471061,
+    "longitude": -70.26046
   },
   {
     "patent": "SDJD98",
     "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "104159",
-    "hourometer": "8640",
-    "lastUpdate": "30/10/2024 3:24:00",
+    "odometer": "106823",
+    "hourometer": "8845",
+    "lastUpdate": "13/11/2024 8:54:00",
     "source": "Volvo Connect",
-    "latitude": -27.471057,
-    "longitude": -70.260503
+    "latitude": -27.470968,
+    "longitude": -70.260813
   },
   {
     "patent": "SDJD99",
     "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "108764",
-    "hourometer": "8734",
-    "lastUpdate": "30/10/2024 2:24:00",
+    "odometer": "111735",
+    "hourometer": "8957",
+    "lastUpdate": "13/11/2024 9:23:00",
     "source": "Volvo Connect",
-    "latitude": -27.470908,
-    "longitude": -70.261238
+    "latitude": -27.470964,
+    "longitude": -70.260824
   },
   {
     "patent": "SDWZ10",
     "location": "Calle Balmaceda, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "97846",
-    "hourometer": "8076",
-    "lastUpdate": "30/10/2024 3:28:00",
+    "odometer": "99416",
+    "hourometer": "8274",
+    "lastUpdate": "13/11/2024 10:26:00",
     "source": "Volvo Connect",
-    "latitude": -27.493619,
-    "longitude": -70.257213
+    "latitude": -27.49399,
+    "longitude": -70.257359
   },
   {
     "patent": "SDWZ11",
-    "location": "Calle Balmaceda, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "128426",
-    "hourometer": "10032",
-    "lastUpdate": "30/10/2024 3:29:00",
+    "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
+    "odometer": "131140",
+    "hourometer": "10277",
+    "lastUpdate": "13/11/2024 10:11:00",
     "source": "Volvo Connect",
-    "latitude": -27.482025,
-    "longitude": -70.261074
+    "latitude": -27.470997,
+    "longitude": -70.260534
   },
   {
     "patent": "SGXD67",
     "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "105485",
+    "odometer": "107367",
     "hourometer": "6811",
     "lastUpdate": "06/11/2023 10:14:00",
     "source": "Volvo Connect",
@@ -161,39 +161,39 @@
   },
   {
     "patent": "SGXD68",
-    "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "135815",
-    "hourometer": "10177",
-    "lastUpdate": "30/10/2024 2:36:00",
+    "location": "Avenida Miguel Lemeur 203, 1580000 Tierra Amarilla, Atacama, Chile",
+    "odometer": "138807",
+    "hourometer": "10407",
+    "lastUpdate": "12/11/2024 4:16:00",
     "source": "Volvo Connect",
-    "latitude": -27.471028,
-    "longitude": -70.260827
+    "latitude": -27.472063,
+    "longitude": -70.265136
   },
   {
     "patent": "SGXD92",
-    "location": "Calle Balmaceda, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "91756",
-    "hourometer": "7409",
-    "lastUpdate": "30/10/2024 2:48:00",
+    "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
+    "odometer": "94634",
+    "hourometer": "7634",
+    "lastUpdate": "13/11/2024 9:53:00",
     "source": "Volvo Connect",
-    "latitude": -27.469792,
-    "longitude": -70.263213
+    "latitude": -27.47096,
+    "longitude": -70.261001
   },
   {
     "patent": "SGXF55",
     "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "90615",
-    "hourometer": "7409",
-    "lastUpdate": "30/10/2024 2:58:00",
+    "odometer": "93353",
+    "hourometer": "7624",
+    "lastUpdate": "13/11/2024 8:57:00",
     "source": "Volvo Connect",
-    "latitude": -27.471019,
-    "longitude": -70.260817
+    "latitude": -27.470775,
+    "longitude": -70.261435
   },
   {
     "patent": "SHJS80",
     "location": "Calle Camino a la Mina, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "128558",
-    "hourometer": "9744",
+    "odometer": "131729",
+    "hourometer": "9980",
     "lastUpdate": "05/07/2024 10:30:00",
     "source": "Volvo Connect",
     "latitude": -27.471,
@@ -202,22 +202,22 @@
   {
     "patent": "SHJS81",
     "location": "Tocopilla, Antofagasta, Chile",
-    "odometer": "92715",
-    "hourometer": "7309",
-    "lastUpdate": "21/10/2024 2:37:00",
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "06/11/2024 3:03:00",
     "source": "Volvo Connect",
-    "latitude": -22.305398,
-    "longitude": -70.159469
+    "latitude": -22.383216,
+    "longitude": -70.215495
   },
   {
     "patent": "SHJS94",
-    "location": "C-35, 1580000 Tierra Amarilla, Atacama, Chile",
-    "odometer": "32965",
-    "hourometer": "1068",
-    "lastUpdate": "30/10/2024 3:21:00",
+    "location": "Vía Panamericana, 1490000 Chañaral, Atacama, Chile",
+    "odometer": "34840",
+    "hourometer": "1113",
+    "lastUpdate": "13/11/2024 9:55:00",
     "source": "Volvo Connect",
-    "latitude": -27.43077,
-    "longitude": -70.263293
+    "latitude": -26.142234,
+    "longitude": -70.456045
   },
   {
     "patent": "SHWR75",
@@ -231,42 +231,42 @@
   },
   {
     "patent": "SHWR76",
-    "location": "Vía Panamericana, 1530000 Copiapó, Atacama, Chile",
-    "odometer": "107168",
-    "hourometer": "8743",
-    "lastUpdate": "04/10/2024 8:44:00",
+    "location": "Avenida Copayapu 3042, 1530000 Copiapó, Atacama, Chile",
+    "odometer": "107234",
+    "hourometer": "8745",
+    "lastUpdate": "13/11/2024 10:29:00",
     "source": "Volvo Connect",
-    "latitude": -27.407307,
-    "longitude": -70.351403
+    "latitude": -27.389109,
+    "longitude": -70.312869
   },
   {
     "patent": "SLKB85",
     "location": "D-605, 1900000 Punitaqui, Coquimbo, Chile",
-    "odometer": "70693",
-    "hourometer": "8741",
-    "lastUpdate": "30/10/2024 2:42:00",
+    "odometer": "71636",
+    "hourometer": "8872",
+    "lastUpdate": "13/11/2024 9:42:00",
     "source": "Volvo Connect",
-    "latitude": -30.854444,
-    "longitude": -71.227853
+    "latitude": -30.854887,
+    "longitude": -71.226587
   },
   {
     "patent": "SLKB86",
     "location": "D-605, 1900000 Punitaqui, Coquimbo, Chile",
-    "odometer": "60349",
-    "hourometer": "7792",
-    "lastUpdate": "30/10/2024 3:23:00",
+    "odometer": "61354",
+    "hourometer": "7945",
+    "lastUpdate": "13/11/2024 9:33:00",
     "source": "Volvo Connect",
-    "latitude": -30.854451,
-    "longitude": -71.225373
+    "latitude": -30.854865,
+    "longitude": -71.22659
   },
   {
     "patent": "SPCK90",
-    "location": "Vía Panamericana, 1490000 Chañaral, Atacama, Chile",
-    "odometer": "15000",
-    "hourometer": "388",
-    "lastUpdate": "21/10/2024 12:25:00",
+    "location": "Taltal, Antofagasta, Chile",
+    "odometer": "15071",
+    "hourometer": "389",
+    "lastUpdate": "06/11/2024 10:26:00",
     "source": "Volvo Connect",
-    "latitude": -26.168004,
-    "longitude": -70.461753
+    "latitude": -25.679077,
+    "longitude": -70.567976
   }
 ]

@@ -24,7 +24,7 @@ async function scraping() {
     console.log(`Password: ${password}`);
 
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         slowMo: 5,
         timeout: 60000,
         protocolTimeout: 60000,
@@ -33,7 +33,7 @@ async function scraping() {
         //protocolTimeout: 120000
     });
     const page = await browser.newPage();
-    await page.setViewport({ width: 1280, height: 800 });
+    await page.setViewport({ width: 1920, height: 1080 });
     await page.goto(urlOrbisGPS, { waitUntil: 'networkidle2' });
 
     await page.type('#user', username);
@@ -56,9 +56,9 @@ async function scraping() {
             contador++;
             await row.evaluate(node => node.scrollIntoView());
             await row.hover();
-            await new Promise(r => setTimeout(r, 2000));
-            await page.waitForFunction(() => document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK') && document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK').innerText !== '');
             await new Promise(r => setTimeout(r, 1500));
+            await page.waitForFunction(() => document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK') && document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK').innerText !== '');
+            await new Promise(r => setTimeout(r, 1000));
             // Extraer la información del pop-up
             const additionalInfo = await page.evaluate(async () => {
                 const popup = document.querySelector('div#messageBoxWrapper.messageBoxWrapper_esoK');

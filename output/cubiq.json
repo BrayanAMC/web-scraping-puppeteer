@@ -2,152 +2,162 @@
   {
     "patent": "LBF05461",
     "location": "Punitaqui, Chile",
-    "odometer": "7658",
-    "hourometer": "7557",
-    "lastUpdate": "30/10/2024 00:00:00",
+    "odometer": "7885",
+    "hourometer": "7725",
+    "lastUpdate": "13/11/2024 00:00:00",
     "source": "Cubiq",
     "latitude": -30.85,
     "longitude": -71.22
-  },
-  {
-    "patent": "AZ600586",
-    "location": "Punitaqui, Chile",
-    "odometer": "0",
-    "hourometer": "5189",
-    "lastUpdate": "30/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -30.85,
-    "longitude": -71.22
-  },
-  {
-    "patent": "MB800854",
-    "location": "Camino Mina Las Luces, 1530000 Taltal, Antofagasta Region, Chile",
-    "odometer": "399",
-    "hourometer": "2432",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -25.67917,
-    "longitude": -70.56749
-  },
-  {
-    "patent": "MPW02116",
-    "location": "Avenida Miguel Lemeur 191, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "7423",
-    "hourometer": "3409",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -27.472,
-    "longitude": -70.26492
-  },
-  {
-    "patent": "TJL05848",
-    "location": "Punitaqui, Chile",
-    "odometer": "1622",
-    "hourometer": "4598",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -30.85,
-    "longitude": -71.22
-  },
-  {
-    "patent": "SMC01884",
-    "location": "Punitaqui, Chile",
-    "odometer": "122",
-    "hourometer": "9009",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -30.85,
-    "longitude": -71.22
-  },
-  {
-    "patent": "MB800856",
-    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "350",
-    "hourometer": "1474",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -27.49168,
-    "longitude": -70.30484
-  },
-  {
-    "patent": "ZBN31394",
-    "location": "Tierra Amarilla, Chile",
-    "odometer": "99",
-    "hourometer": "2318",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -27.49352,
-    "longitude": -70.25726
-  },
-  {
-    "patent": "ZBN31519",
-    "location": "Tierra Amarilla, Chile",
-    "odometer": "53",
-    "hourometer": "4615",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -27.49139,
-    "longitude": -70.25859
-  },
-  {
-    "patent": "B5400570",
-    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "4472",
-    "hourometer": "3798",
-    "lastUpdate": "29/10/2024 00:00:00",
-    "source": "Cubiq",
-    "latitude": -27.47009,
-    "longitude": -70.26302
   },
   {
     "patent": "SMC01907",
     "location": "Tierra Amarilla, Chile",
-    "odometer": "394",
-    "hourometer": "8971",
-    "lastUpdate": "29/10/2024 00:00:00",
+    "odometer": "395",
+    "hourometer": "8988",
+    "lastUpdate": "13/11/2024 00:00:00",
     "source": "Cubiq",
     "latitude": -27.49,
     "longitude": -70.25
   },
   {
+    "patent": "AZ600586",
+    "location": "Punitaqui, Chile",
+    "odometer": "0",
+    "hourometer": "5252",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "MPW02116",
+    "location": "Avenida Miguel Lemeur 169, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "7425",
+    "hourometer": "3416",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47185,
+    "longitude": -70.26442
+  },
+  {
+    "patent": "TJL05848",
+    "location": "Punitaqui, Chile",
+    "odometer": "1649",
+    "hourometer": "4619",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "ZBN31519",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "64",
+    "hourometer": "4767",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49353,
+    "longitude": -70.25731
+  },
+  {
+    "patent": "SMC01884",
+    "location": "Punitaqui, Chile",
+    "odometer": "125",
+    "hourometer": "9056",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "B5400570",
+    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "4543",
+    "hourometer": "3864",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.4701,
+    "longitude": -70.26302
+  },
+  {
+    "patent": "H9P00157",
+    "location": "Juan Glasinovic 360, 1260000 Antofagasta, Antofagasta Region, Chile",
+    "odometer": "379",
+    "hourometer": "807",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -23.59703,
+    "longitude": -70.38847
+  },
+  {
+    "patent": "ZBN31394",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "102",
+    "hourometer": "2396",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49289,
+    "longitude": -70.25836
+  },
+  {
+    "patent": "MB800854",
+    "location": "Taltal, Chile",
+    "odometer": "428",
+    "hourometer": "2464",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -25.66886,
+    "longitude": -70.57857
+  },
+  {
+    "patent": "H9P00244",
+    "location": "Tocopilla, Chile",
+    "odometer": "28",
+    "hourometer": "8",
+    "lastUpdate": "11/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -22.28315,
+    "longitude": -70.18091
+  },
+  {
     "patent": "B5400413",
     "location": "Tocopilla, Chile",
-    "odometer": "6226",
-    "hourometer": "2958",
-    "lastUpdate": "25/10/2024 00:00:00",
+    "odometer": "6358",
+    "hourometer": "2999",
+    "lastUpdate": "11/11/2024 00:00:00",
     "source": "Cubiq",
     "latitude": -22.38,
     "longitude": -70.21
   },
   {
-    "patent": "H9P00157",
-    "location": "Avenida Pedro Aguirre Cerda 7832, 1260000 Antofagasta, Antofagasta Region, Chile",
-    "odometer": "379",
-    "hourometer": "807",
-    "lastUpdate": "21/10/2024 00:00:00",
+    "patent": "MB800856",
+    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "355",
+    "hourometer": "1542",
+    "lastUpdate": "11/11/2024 00:00:00",
     "source": "Cubiq",
-    "latitude": -23.59713,
-    "longitude": -70.38863
+    "latitude": -27.49174,
+    "longitude": -70.30443
   },
   {
     "patent": "L9P03066",
     "location": "Tocopilla, Chile",
-    "odometer": "1985",
-    "hourometer": "1626",
-    "lastUpdate": "17/10/2024 00:00:00",
+    "odometer": "2148",
+    "hourometer": "1821",
+    "lastUpdate": "09/11/2024 00:00:00",
     "source": "Cubiq",
-    "latitude": -22.28184,
-    "longitude": -70.16591
+    "latitude": -22.38852,
+    "longitude": -70.2112
   },
   {
     "patent": "9SD00455",
     "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
     "odometer": "0",
-    "hourometer": "5489",
-    "lastUpdate": "08/10/2024 00:00:00",
+    "hourometer": "5490",
+    "lastUpdate": "07/11/2024 00:00:00",
     "source": "Cubiq",
-    "latitude": -27.3454,
-    "longitude": -70.36414
+    "latitude": -27.34439,
+    "longitude": -70.36513
   },
   {
     "patent": "AZ601000",
@@ -188,16 +198,6 @@
     "source": "Cubiq",
     "latitude": -30.85,
     "longitude": -71.22
-  },
-  {
-    "patent": "JPA04941",
-    "location": "Camino a Mal Paso, 1530000 Tierra Amarilla, Atacama Region, Chile",
-    "odometer": "3801",
-    "hourometer": "5375",
-    "lastUpdate": "11/07/2022 00:00:00",
-    "source": "Cubiq",
-    "latitude": -27.5,
-    "longitude": -70.27
   },
   {
     "patent": "LEW01784",
