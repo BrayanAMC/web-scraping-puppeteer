@@ -52,7 +52,7 @@ async function scraping() {
             console.log('Element not found');
         }
     });
-    await page.waitForSelector('[data-testid="pros-assets-icon"]', { timeout: 60000 });
+    await page.waitForSelector('[data-testid="pros-assets-icon"]', { timeout: 60000 });//hace click en el icono de vehiculos (Activos)
     await page.evaluate(() => {
         const element = document.querySelector('[data-testid="pros-assets-icon"]');
         if (element) {
@@ -61,9 +61,9 @@ async function scraping() {
             console.log('Element not found');
         }
     });
-    //await page.click('[data-testid="pros-assets-icon"]');
-    await page.waitForSelector('.MuiTypography-root.MuiTypography-body1');
-    await page.click('.MuiTypography-root.MuiTypography-body1');
+    //await page.click('[data-testid="pros-assets-icon"]');//hace click en el Resumen de flota/Vehiculos 28 vehiculos
+    await page.waitForSelector('.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-divider.MuiListItem-button.MuiListItem-secondaryAction.css-486syr');
+    await page.click('.MuiButtonBase-root.MuiListItem-root.MuiListItem-gutters.MuiListItem-padding.MuiListItem-divider.MuiListItem-button.MuiListItem-secondaryAction.css-486syr');
     //estamos en la pagina que tiene ya las listas de los vehiculos
     let allVehiclesInfo = [];
     await page.waitForSelector('.MuiTypography-root.MuiTypography-subtitle1.MuiLink-root')//espera a que carguen las patentes
