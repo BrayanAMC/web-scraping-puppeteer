@@ -1,0 +1,252 @@
+[
+  {
+    "patent": "LBF05461",
+    "location": "Punitaqui, Chile",
+    "odometer": "7885",
+    "hourometer": "7725",
+    "lastUpdate": "13/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "SMC01907",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "395",
+    "hourometer": "8988",
+    "lastUpdate": "13/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49,
+    "longitude": -70.25
+  },
+  {
+    "patent": "AZ600586",
+    "location": "Punitaqui, Chile",
+    "odometer": "0",
+    "hourometer": "5252",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "MPW02116",
+    "location": "Avenida Miguel Lemeur 169, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "7425",
+    "hourometer": "3416",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47185,
+    "longitude": -70.26442
+  },
+  {
+    "patent": "TJL05848",
+    "location": "Punitaqui, Chile",
+    "odometer": "1649",
+    "hourometer": "4619",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "ZBN31519",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "64",
+    "hourometer": "4767",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49353,
+    "longitude": -70.25731
+  },
+  {
+    "patent": "SMC01884",
+    "location": "Punitaqui, Chile",
+    "odometer": "125",
+    "hourometer": "9056",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "B5400570",
+    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "4543",
+    "hourometer": "3864",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.4701,
+    "longitude": -70.26302
+  },
+  {
+    "patent": "H9P00157",
+    "location": "Juan Glasinovic 360, 1260000 Antofagasta, Antofagasta Region, Chile",
+    "odometer": "379",
+    "hourometer": "807",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -23.59703,
+    "longitude": -70.38847
+  },
+  {
+    "patent": "ZBN31394",
+    "location": "Tierra Amarilla, Chile",
+    "odometer": "102",
+    "hourometer": "2396",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49289,
+    "longitude": -70.25836
+  },
+  {
+    "patent": "MB800854",
+    "location": "Taltal, Chile",
+    "odometer": "428",
+    "hourometer": "2464",
+    "lastUpdate": "12/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -25.66886,
+    "longitude": -70.57857
+  },
+  {
+    "patent": "H9P00244",
+    "location": "Tocopilla, Chile",
+    "odometer": "28",
+    "hourometer": "8",
+    "lastUpdate": "11/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -22.28315,
+    "longitude": -70.18091
+  },
+  {
+    "patent": "B5400413",
+    "location": "Tocopilla, Chile",
+    "odometer": "6358",
+    "hourometer": "2999",
+    "lastUpdate": "11/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -22.38,
+    "longitude": -70.21
+  },
+  {
+    "patent": "MB800856",
+    "location": "Ruta C-397, Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "355",
+    "hourometer": "1542",
+    "lastUpdate": "11/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.49174,
+    "longitude": -70.30443
+  },
+  {
+    "patent": "L9P03066",
+    "location": "Tocopilla, Chile",
+    "odometer": "2148",
+    "hourometer": "1821",
+    "lastUpdate": "09/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -22.38852,
+    "longitude": -70.2112
+  },
+  {
+    "patent": "9SD00455",
+    "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
+    "odometer": "0",
+    "hourometer": "5490",
+    "lastUpdate": "07/11/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.34439,
+    "longitude": -70.36513
+  },
+  {
+    "patent": "AZ601000",
+    "location": "Avenida Miguel Lemeur 169, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "0",
+    "hourometer": "464",
+    "lastUpdate": "25/05/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47176,
+    "longitude": -70.26503
+  },
+  {
+    "patent": "SBR01077",
+    "location": "Río Copiapó 2351, 1530000 Copiapó, Atacama Region, Chile",
+    "odometer": "8",
+    "hourometer": "10649",
+    "lastUpdate": "06/05/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.34453,
+    "longitude": -70.3649
+  },
+  {
+    "patent": "L9P03485",
+    "location": "La Calera 40, 1530000 Tierra Amarilla, Atacama Region, Chile",
+    "odometer": "1683",
+    "hourometer": "1606",
+    "lastUpdate": "03/03/2024 00:00:00",
+    "source": "Cubiq",
+    "latitude": -27.47037,
+    "longitude": -70.26341
+  },
+  {
+    "patent": "L9P01106",
+    "location": "Punitaqui, Chile",
+    "odometer": "0",
+    "hourometer": "4635",
+    "lastUpdate": "15/07/2022 00:00:00",
+    "source": "Cubiq",
+    "latitude": -30.85,
+    "longitude": -71.22
+  },
+  {
+    "patent": "LEW01784",
+    "location": "N/A",
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "patent": "9YZ01014",
+    "location": "N/A",
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "patent": "KT400381",
+    "location": "N/A",
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "patent": "KT400382",
+    "location": "N/A",
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
+  },
+  {
+    "patent": "KT400389",
+    "location": "N/A",
+    "odometer": "N/A",
+    "hourometer": "N/A",
+    "lastUpdate": "Sin información",
+    "source": "Cubiq",
+    "latitude": null,
+    "longitude": null
+  }
+]
