@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { client } from './authClient.js';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function createChassisToPatentMap(siteId, listId) {
     try {
@@ -72,7 +75,8 @@ export function normalizePatent(patent, chassisToPatentMap) {
 }
 
 export function readJsonData(chassisToPatentMap) {
-    const jsonDirectory = '../puppeteer-overview/output';
+    //const jsonDirectory = '../puppeteer-overview/output';
+    const jsonDirectory = path.join(__dirname, '../output');
     const jsonFiles = fs.readdirSync(jsonDirectory).filter(file => 
         file.endsWith('.json') && !['package-lock.json', 'package.json', 'tsconfig.json'].includes(file)
     );
